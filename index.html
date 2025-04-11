@@ -6,6 +6,7 @@
     <title>Sagar K. Chavan | Interactive Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
     <style>
         :root {
             --primary: #2563eb;
@@ -856,14 +857,14 @@
         }
 
         .company-logo {
-    margin-bottom: 15px;
-}
+            margin-bottom: 15px;
+        }
 
-.company-logo img {
-    max-height: 50px;
-    max-width: 150px;
-    object-fit: contain;
-}
+        .company-logo img {
+            max-height: 50px;
+            max-width: 150px;
+            object-fit: contain;
+        }
         
         /* Education Section with Flip Cards */
         .education {
@@ -1762,6 +1763,404 @@
                 align-items: center;
             }
         }
+
+        /* Add these styles to your existing CSS */
+        .skills-container {
+            margin-top: 30px;
+        }
+
+        .skills-category {
+            margin-bottom: 25px;
+        }
+
+        .skills-category-title {
+            color: #3498db;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: rgba(52, 152, 219, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .skill-category h5 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: #3498db;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: #2980b9;
+            transform: scale(1.05);
+        }
+
+        .skill-tag.soft-skill {
+            background: #2ecc71;
+        }
+
+        .skill-tag.soft-skill:hover {
+            background: #27ae60;
+        }
+
+        .certifications-list p {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+        }
+
+        .certifications-list p::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #2ecc71;
+        }
+
+        /* Additional CSS for the enhanced certificates section */
+        .certificate-filters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .certificate-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        
+        [data-category="certification"] .certificate-badge {
+            background: #3498db;
+        }
+        
+        [data-category="course"] .certificate-badge {
+            background: #2ecc71;
+        }
+        
+        [data-category="offer"] .certificate-badge {
+            background: #1abc9c;
+        }
+        
+        [data-category="training"] .certificate-badge {
+            background: #16a085;
+        }
+        
+        [data-category="internship"] .certificate-badge {
+            background: #9b59b6;
+        }
+        
+        [data-category="webinar"] .certificate-badge {
+            background: #f39c12;
+        }
+        
+        [data-category="hackathon"] .certificate-badge {
+            background: #e74c3c;
+        }
+        
+        [data-category="interactive"] .certificate-badge {
+            background: #34495e;
+        }
+
+        /* Education Card Flip Styles */
+        .education-card {
+            perspective: 1000px;
+            height: 250px;
+            cursor: pointer;
+        }
+
+        .education-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+
+        .education-card:hover .education-card-inner {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .education-card.flipped .education-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .education-card-front,
+        .education-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .education-card-back {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            transform: rotateY(180deg);
+        }
+
+        .education-features {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+
+        .education-features li {
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .education-features i {
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        .education-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .education-link {
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            background: var(--primary);
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .education-link i {
+            margin-right: 8px;
+        }
+
+        .education-link:hover {
+            background: #2980b9;
+            transform: translateX(5px);
+        }
+
+        .flip-back-btn {
+            margin-top: 15px;
+            padding: 8px 15px;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+
+        .flip-back-btn:hover {
+            background: #1a252f;
+        }
+
+        .flip-back-btn i {
+            margin-right: 5px;
+        }
+
+        /* Timeline Styles */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #3498db;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 10px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-icon {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-color: #fff;
+            border: 4px solid #3498db;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-size: 16px;
+            color: #3498db;
+            z-index: 1;
+            top: 20px;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-icon {
+            right: -20px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-icon {
+            left: -20px;
+        }
+        
+        /* Card Styles */
+        .timeline-content {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .company-logo {
+            width: 60px;
+            height: 60px;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .company-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+        
+        .card-title h3 {
+            margin: 0;
+            color: #2c3e50;
+            font-size: 18px;
+        }
+        
+        .card-title h4 {
+            margin: 5px 0;
+            color: #7f8c8d;
+            font-size: 14px;
+            font-weight: normal;
+        }
+        
+        .timeline-date {
+            color: #3498db;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        
+        .card-body ul {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        
+        .card-body li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+            color: #34495e;
+        }
+        
+        .card-footer {
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid #ecf0f1;
+        }
+        
+        .tech-used {
+            color: #7f8c8d;
+            font-size: 13px;
+            font-style: italic;
+        }
+
+        /* Form status messages */
+        .form-status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .form-status.success {
+            background-color: #d4edda;
+            color: #155724;
+            display: block;
+        }
+
+        .form-status.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -1840,614 +2239,351 @@
     </section>
 
     <!-- About Section with Animated Skills -->
-<section id="about" class="about">
-    <div class="container">
-        <div class="section-header">
-            <h2>About Me</h2>
-            <p>Here you will find more information about me, what I do, and my current skills mostly in terms of programming and technology</p>
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <p>Here you will find more information about me, what I do, and my current skills mostly in terms of programming and technology</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>🚀 Tech Enthusiast | 🛡️ Cybersecurity | 🌐 Web Development | 🔬 Research | 🎨 UI/UX | 📊 Project Management</h3>
+                    <p>I'm a B.Tech CSBS student at VTU, Belagavi, with internship experience at C-DAC and RGESIndia. I hold Google certifications in Cybersecurity, UX Design, and Project Management.</p>
+                    <p>My interests span cybersecurity, web development, and UI/UX design. I've worked on ethical hacking tools, designed responsive websites, and created user-focused interfaces in Figma.</p>
+                    <p>I enjoy building secure, smart, and accessible tech solutions. From language translation tools to virtual labs, I'm driven to solve real-world problems through innovative technology.</p>
+                    
+                    <div class="skills-container">
+                        <h3>My Skills</h3>
+                        
+                        <div class="skills-category">
+                            <h4 class="skills-category-title">Technical Skills</h4>
+                            <div class="skills-grid">
+                                <div class="skill-category">
+                                    <h5>Programming Languages</h5>
+                                    <div class="skill-tags">
+                                        <span class="skill-tag">C</span>
+                                        <span class="skill-tag">C++</span>
+                                        <span class="skill-tag">Python</span>
+                                        <span class="skill-tag">Java</span>
+                                        <span class="skill-tag">JavaScript</span>
+                                        <span class="skill-tag">Dart</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="skill-category">
+                                    <h5>Web Development</h5>
+                                    <div class="skill-tags">
+                                        <span class="skill-tag">HTML</span>
+                                        <span class="skill-tag">CSS</span>
+                                        <span class="skill-tag">JavaScript</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="skill-category">
+                                    <h5>Database Management</h5>
+                                    <div class="skill-tags">
+                                        <span class="skill-tag">SQL</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="skill-category">
+                                    <h5>Cybersecurity</h5>
+                                    <div class="skill-tags">
+                                        <span class="skill-tag">Network Security</span>
+                                        <span class="skill-tag">Risk Management</span>
+                                        <span class="skill-tag">Vulnerability Assessment</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="skill-category">
+                                    <h5>Tools & Technologies</h5>
+                                    <div class="skill-tags">
+                                        <span class="skill-tag">VS Code</span>
+                                        <span class="skill-tag">Git</span>
+                                        <span class="skill-tag">Linux</span>
+                                        <span class="skill-tag">Microsoft Office</span>
+                                        <span class="skill-tag">Android Studio</span>
+                                        <span class="skill-tag">Figma</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="skill-category">
+                                    <h5>Project Management</h5>
+                                    <div class="skill-tags">
+                                        <span class="skill-tag">Agile Methodologies</span>
+                                        <span class="skill-tag">Documentation</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="skill-category">
+                                    <h5>App Development</h5>
+                                    <div class="skill-tags">
+                                        <span class="skill-tag">UI/UX Design</span>
+                                        <span class="skill-tag">AIML</span>
+                                        <span class="skill-tag">Flutter</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="skills-category">
+                            <h4 class="skills-category-title">Soft Skills</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag soft-skill">Communication</span>
+                                <span class="skill-tag soft-skill">Teamwork</span>
+                                <span class="skill-tag soft-skill">Problem-Solving</span>
+                                <span class="skill-tag soft-skill">Time Management</span>
+                                <span class="skill-tag soft-skill">Adaptability</span>
+                                <span class="skill-tag soft-skill">Critical Thinking</span>
+                                <span class="skill-tag soft-skill">Leadership</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="me2.jpg" alt="About Me">
+                    <div class="about-badge">
+                        <span>1+</span>
+                        <span>Years Experience</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="about-content">
-            <div class="about-text">
-                <h3>🚀 Tech Enthusiast | 🛡️ Cybersecurity | 🌐 Web Development | 🔬 Research | 🎨 UI/UX | 📊 Project Management</h3>
-                <p>I'm a B.Tech CSBS student at VTU, Belagavi, with internship experience at C-DAC and RGESIndia. I hold Google certifications in Cybersecurity, UX Design, and Project Management.</p>
-                <p>My interests span cybersecurity, web development, and UI/UX design. I've worked on ethical hacking tools, designed responsive websites, and created user-focused interfaces in Figma.</p>
-                <p>I enjoy building secure, smart, and accessible tech solutions. From language translation tools to virtual labs, I'm driven to solve real-world problems through innovative technology.</p>
+    </section>
+
+    <!-- Experience Section with Interactive Cards -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2>My Experience</h2>
+                <p>Here is a quick summary of my most recent experiences and education</p>
+            </div>
+            <div class="timeline">
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="timeline-content card">
+                        <div class="card-header">
+                            <div class="company-logo">
+                                <a href="https://www.rgesindia.com/" target="_blank">
+                                    <img src="rges.jpeg" alt="Risk Guard Enterprise Solutions">
+                                </a>
+                            </div>
+                            <div class="card-title">
+                                <h3>Research Intern</h3>
+                                <h4>Risk Guard Enterprise Solutions OPC Private Limited</h4>
+                                <div class="timeline-date">Jan 2025 - Present</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Currently working on three projects focused on UI/UX design and web development.</li>
+                                <li>Designing intuitive and user-friendly interfaces to enhance user experience.</li>
+                                <li>Developing responsive and functional websites using modern web technologies.</li>
+                                <li>Collaborating with teams to implement innovative design solutions.</li>
+                                <li>Gaining hands-on experience in research-driven design and development.</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <span class="tech-used">UI/UX Design • Web Development • Research</span>
+                        </div>
+                    </div>
+                </div>
                 
-                <div class="skills-container">
-                    <h3>My Skills</h3>
-                    
-                    <div class="skills-category">
-                        <h4 class="skills-category-title">Technical Skills</h4>
-                        <div class="skills-grid">
-                            <div class="skill-category">
-                                <h5>Programming Languages</h5>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">C</span>
-                                    <span class="skill-tag">C++</span>
-                                    <span class="skill-tag">Python</span>
-                                    <span class="skill-tag">Java</span>
-                                    <span class="skill-tag">JavaScript</span>
-                                    <span class="skill-tag">Dart</span>
-                                </div>
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="timeline-content card">
+                        <div class="card-header">
+                            <div class="company-logo">
+                                <a href="https://www.cdac.in/" target="_blank">
+                                    <img src="cdac.jpeg" alt="C-DAC">
+                                </a>
                             </div>
-                            
-                            <div class="skill-category">
-                                <h5>Web Development</h5>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">HTML</span>
-                                    <span class="skill-tag">CSS</span>
-                                    <span class="skill-tag">JavaScript</span>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-category">
-                                <h5>Database Management</h5>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">SQL</span>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-category">
-                                <h5>Cybersecurity</h5>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">Network Security</span>
-                                    <span class="skill-tag">Risk Management</span>
-                                    <span class="skill-tag">Vulnerability Assessment</span>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-category">
-                                <h5>Tools & Technologies</h5>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">VS Code</span>
-                                    <span class="skill-tag">Git</span>
-                                    <span class="skill-tag">Linux</span>
-                                    <span class="skill-tag">Microsoft Office</span>
-                                    <span class="skill-tag">Android Studio</span>
-                                    <span class="skill-tag">Figma</span>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-category">
-                                <h5>Project Management</h5>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">Agile Methodologies</span>
-                                    <span class="skill-tag">Documentation</span>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-category">
-                                <h5>App Development</h5>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">UI/UX Design</span>
-                                    <span class="skill-tag">AIML</span>
-                                    <span class="skill-tag">Flutter</span>
-                                </div>
+                            <div class="card-title">
+                                <h3>Cyber Security Project Intern</h3>
+                                <h4>Centre for Development of Advanced Computing (C-DAC)</h4>
+                                <div class="timeline-date">Dec 2024 - Jan 2025</div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="skills-category">
-                        <h4 class="skills-category-title">Soft Skills</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag soft-skill">Communication</span>
-                            <span class="skill-tag soft-skill">Teamwork</span>
-                            <span class="skill-tag soft-skill">Problem-Solving</span>
-                            <span class="skill-tag soft-skill">Time Management</span>
-                            <span class="skill-tag soft-skill">Adaptability</span>
-                            <span class="skill-tag soft-skill">Critical Thinking</span>
-                            <span class="skill-tag soft-skill">Leadership</span>
+                        <div class="card-body">
+                            <ul>
+                                <li>Conducted Ethical Hacking and Penetration Testing exercises under Basic Advanced Cyber Gyan programs.</li>
+                                <li>Gained expertise in network security, malware analysis, Linux administration, cloud computing, and cryptography.</li>
+                                <li>Hands-on experience in network scanning (Nmap), vulnerability scanning (Nessus, Nuclei), DNS enumeration, and Google Dorks.</li>
+                                <li>Project: Automating Man-in-the-Middle (MitM) Attacks– Developed tools for ARP Spoofing, DNS Spoofing, SSL Stripping, and Session Hijacking to enhance security research and testing.</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <span class="tech-used">Cyber Security • Ethical Hacking • Penetration Testing</span>
                         </div>
                     </div>
-                    
-                    
                 </div>
-            </div>
-            <div class="about-image">
-                <img src="me2.jpg" alt="About Me">
-                <div class="about-badge">
-                    <span>1+</span>
-                    <span>Years Experience</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<style>
-/* Add these styles to your existing CSS */
-.skills-container {
-    margin-top: 30px;
-}
-
-.skills-category {
-    margin-bottom: 25px;
-}
-
-.skills-category-title {
-    color: #3498db;
-    margin-bottom: 15px;
-    font-size: 1.2rem;
-}
-
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.skill-category {
-    background: rgba(52, 152, 219, 0.1);
-    padding: 15px;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-}
-
-.skill-category:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.skill-category h5 {
-    color: #2c3e50;
-    margin-bottom: 10px;
-    font-size: 1rem;
-}
-
-.skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.skill-tag {
-    background: #3498db;
-    color: white;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    transition: all 0.3s ease;
-}
-
-.skill-tag:hover {
-    background: #2980b9;
-    transform: scale(1.05);
-}
-
-.skill-tag.soft-skill {
-    background: #2ecc71;
-}
-
-.skill-tag.soft-skill:hover {
-    background: #27ae60;
-}
-
-.certifications-list p {
-    position: relative;
-    padding-left: 20px;
-    margin-bottom: 8px;
-}
-
-.certifications-list p::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: #2ecc71;
-}
-
-@media (max-width: 768px) {
-    .skills-grid {
-        grid-template-columns: 1fr;
-    }
-}
-</style>
-
-<script>
-// Add this JavaScript to make the skills interactive
-document.addEventListener('DOMContentLoaded', function() {
-    const skillTags = document.querySelectorAll('.skill-tag');
-    
-    skillTags.forEach(tag => {
-        tag.addEventListener('click', function() {
-            this.classList.toggle('highlighted');
-        });
-    });
-});
-</script>
-
-<!-- Experience Section with Interactive Cards -->
-<section id="experience" class="experience">
-    <div class="container">
-        <div class="section-header">
-            <h2>My Experience</h2>
-            <p>Here is a quick summary of my most recent experiences and education</p>
-        </div>
-        <div class="timeline">
-            <!-- Timeline Item 1 -->
-            <div class="timeline-item">
-                <div class="timeline-icon">
-                    <i class="fas fa-briefcase"></i>
-                </div>
-                <div class="timeline-content card">
-                    <div class="card-header">
-                        <div class="company-logo">
-                            <a href="https://www.rgesindia.com/" target="_blank">
-                                <img src="rges.jpeg" alt="Risk Guard Enterprise Solutions">
-                            </a>
+                
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="timeline-content card">
+                        <div class="card-header">
+                            <div class="company-logo">
+                                <a href="https://codsoft.in/" target="_blank">
+                                    <img src="codsoft.jpeg" alt="CodSoft">
+                                </a>
+                            </div>
+                            <div class="card-title">
+                                <h3>Web Development Intern</h3>
+                                <h4>CodSoft</h4>
+                                <div class="timeline-date">Jan 2024 - Feb 2024</div>
+                            </div>
                         </div>
-                        <div class="card-title">
-                            <h3>Research Intern</h3>
-                            <h4>Risk Guard Enterprise Solutions OPC Private Limited</h4>
-                            <div class="timeline-date">Jan 2025 - Present</div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Built responsive web projects, including a Landing Page, Portfolio Website, and Calculator App.</li>
+                                <li>Used HTML, CSS, JavaScript for modern UI/UX and interactive elements.</li>
+                                <li>Focused on performance optimization, accessibility, and mobile responsiveness.</li>
+                                <li>Managed code with Git GitHub.</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <span class="tech-used">HTML • CSS • JavaScript • Git</span>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <ul>
-                            <li>Currently working on three projects focused on UI/UX design and web development.</li>
-                            <li>Designing intuitive and user-friendly interfaces to enhance user experience.</li>
-                            <li>Developing responsive and functional websites using modern web technologies.</li>
-                            <li>Collaborating with teams to implement innovative design solutions.</li>
-                            <li>Gaining hands-on experience in research-driven design and development.</li>
-                        </ul>
-                    </div>
-                    <div class="card-footer">
-                        <span class="tech-used">UI/UX Design • Web Development • Research</span>
-                    </div>
                 </div>
-            </div>
-            
-            <!-- Timeline Item 2 -->
-            <div class="timeline-item">
-                <div class="timeline-icon">
-                    <i class="fas fa-briefcase"></i>
-                </div>
-                <div class="timeline-content card">
-                    <div class="card-header">
-                        <div class="company-logo">
-                            <a href="https://www.cdac.in/" target="_blank">
-                                <img src="cdac.jpeg" alt="C-DAC">
-                            </a>
+                
+                <!-- Timeline Item 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="timeline-content card">
+                        <div class="card-header">
+                            <div class="company-logo">
+                                <a href="https://vtu.ac.in/" target="_blank">
+                                    <img src="VTU.png" alt="VTU">
+                                </a>
+                            </div>
+                            <div class="card-title">
+                                <h3>Project Research Intern</h3>
+                                <h4>Visvesvaraya Technological University, Belagavi</h4>
+                                <div class="timeline-date">Nov 2023 - Jan 2024</div>
+                            </div>
                         </div>
-                        <div class="card-title">
-                            <h3>Cyber Security Project Intern</h3>
-                            <h4>Centre for Development of Advanced Computing (C-DAC)</h4>
-                            <div class="timeline-date">Dec 2024 - Jan 2025</div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Conducted research on Cross-Lingual Information Retrieval (CLIR) to enhance multilingual search accessibility.</li>
+                                <li>Developed CLIR models using NLP, Machine Translation (MT), and AI-driven techniques for improved information retrieval.</li>
+                                <li>Worked with large datasets to preprocess and fine-tune language models for better retrieval accuracy.</li>
+                                <li>Explored speech-to-text and text-to-speech technologies for multimodal retrieval.</li>
+                            </ul>
                         </div>
-                    </div>
-                    <div class="card-body">
-                        <ul>
-                            <li>Conducted Ethical Hacking and Penetration Testing exercises under Basic Advanced Cyber Gyan programs.</li>
-                            <li>Gained expertise in network security, malware analysis, Linux administration, cloud computing, and cryptography.</li>
-                            <li>Hands-on experience in network scanning (Nmap), vulnerability scanning (Nessus, Nuclei), DNS enumeration, and Google Dorks.</li>
-                            <li>Project: Automating Man-in-the-Middle (MitM) Attacks– Developed tools for ARP Spoofing, DNS Spoofing, SSL Stripping, and Session Hijacking to enhance security research and testing.</li>
-                        </ul>
-                    </div>
-                    <div class="card-footer">
-                        <span class="tech-used">Cyber Security • Ethical Hacking • Penetration Testing</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Timeline Item 3 -->
-            <div class="timeline-item">
-                <div class="timeline-icon">
-                    <i class="fas fa-briefcase"></i>
-                </div>
-                <div class="timeline-content card">
-                    <div class="card-header">
-                        <div class="company-logo">
-                            <a href="https://codsoft.in/" target="_blank">
-                                <img src="codsoft.jpeg" alt="CodSoft">
-                            </a>
-                        </div>
-                        <div class="card-title">
-                            <h3>Web Development Intern</h3>
-                            <h4>CodSoft</h4>
-                            <div class="timeline-date">Jan 2024 - Feb 2024</div>
+                        <div class="card-footer">
+                            <span class="tech-used">NLP • Machine Translation • AI Research</span>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <ul>
-                            <li>Built responsive web projects, including a Landing Page, Portfolio Website, and Calculator App.</li>
-                            <li>Used HTML, CSS, JavaScript for modern UI/UX and interactive elements.</li>
-                            <li>Focused on performance optimization, accessibility, and mobile responsiveness.</li>
-                            <li>Managed code with Git GitHub.</li>
-                        </ul>
-                    </div>
-                    <div class="card-footer">
-                        <span class="tech-used">HTML • CSS • JavaScript • Git</span>
-                    </div>
                 </div>
-            </div>
-            
-            <!-- Timeline Item 4 -->
-            <div class="timeline-item">
-                <div class="timeline-icon">
-                    <i class="fas fa-briefcase"></i>
-                </div>
-                <div class="timeline-content card">
-                    <div class="card-header">
-                        <div class="company-logo">
-                            <a href="https://vtu.ac.in/" target="_blank">
-                                <img src="VTU.png" alt="VTU">
-                            </a>
+                
+                <!-- Timeline Item 5 -->
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="timeline-content card">
+                        <div class="card-header">
+                            <div class="company-logo">
+                                <a href="https://vtu.ac.in/" target="_blank">
+                                    <img src="VTU.png" alt="VTU">
+                                </a>
+                            </div>
+                            <div class="card-title">
+                                <h3>Understanding Virtual Labs and VPNs</h3>
+                                <h4>Visvesvaraya Technological University, Belagavi</h4>
+                                <div class="timeline-date">Nov 2023 - Dec 2023</div>
+                            </div>
                         </div>
-                        <div class="card-title">
-                            <h3>Project Research Intern</h3>
-                            <h4>Visvesvaraya Technological University, Belagavi</h4>
-                            <div class="timeline-date">Nov 2023 - Jan 2024</div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Explored Virtual Labs for hands-on learning, cloud-based simulations, and remote accessibility.</li>
+                                <li>Gained expertise in VPN technologies, focusing on data encryption, secure remote access, and cybersecurity best practices.</li>
+                                <li>Researched network security, privacy protection, and real-world applications of Virtual Labs and VPNs.</li>
+                            </ul>
                         </div>
-                    </div>
-                    <div class="card-body">
-                        <ul>
-                            <li>Conducted research on Cross-Lingual Information Retrieval (CLIR) to enhance multilingual search accessibility.</li>
-                            <li>Developed CLIR models using NLP, Machine Translation (MT), and AI-driven techniques for improved information retrieval.</li>
-                            <li>Worked with large datasets to preprocess and fine-tune language models for better retrieval accuracy.</li>
-                            <li>Explored speech-to-text and text-to-speech technologies for multimodal retrieval.</li>
-                        </ul>
-                    </div>
-                    <div class="card-footer">
-                        <span class="tech-used">NLP • Machine Translation • AI Research</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Timeline Item 5 -->
-            <div class="timeline-item">
-                <div class="timeline-icon">
-                    <i class="fas fa-briefcase"></i>
-                </div>
-                <div class="timeline-content card">
-                    <div class="card-header">
-                        <div class="company-logo">
-                            <a href="https://vtu.ac.in/" target="_blank">
-                                <img src="VTU.png" alt="VTU">
-                            </a>
-                        </div>
-                        <div class="card-title">
-                            <h3>Understanding Virtual Labs and VPNs</h3>
-                            <h4>Visvesvaraya Technological University, Belagavi</h4>
-                            <div class="timeline-date">Nov 2023 - Dec 2023</div>
+                        <div class="card-footer">
+                            <span class="tech-used">Virtual Labs • VPN • Network Security</span>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <ul>
-                            <li>Explored Virtual Labs for hands-on learning, cloud-based simulations, and remote accessibility.</li>
-                            <li>Gained expertise in VPN technologies, focusing on data encryption, secure remote access, and cybersecurity best practices.</li>
-                            <li>Researched network security, privacy protection, and real-world applications of Virtual Labs and VPNs.</li>
-                        </ul>
-                    </div>
-                    <div class="card-footer">
-                        <span class="tech-used">Virtual Labs • VPN • Network Security</span>
-                    </div>
                 </div>
-            </div>
-            
-            <!-- Timeline Item 6 -->
-            <div class="timeline-item">
-                <div class="timeline-icon">
-                    <i class="fas fa-briefcase"></i>
-                </div>
-                <div class="timeline-content card">
-                    <div class="card-header">
-                        <div class="company-logo">
-                            <a href="https://vtu.ac.in/" target="_blank">
-                                <img src="VTU.png" alt="VTU">
-                            </a>
+                
+                <!-- Timeline Item 6 -->
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="timeline-content card">
+                        <div class="card-header">
+                            <div class="company-logo">
+                                <a href="https://vtu.ac.in/" target="_blank">
+                                    <img src="VTU.png" alt="VTU">
+                                </a>
+                            </div>
+                            <div class="card-title">
+                                <h3>Understanding Virtual Labs and Microsoft Office</h3>
+                                <h4>Visvesvaraya Technological University, Belagavi</h4>
+                                <div class="timeline-date">Oct 2022 - Nov 2022</div>
+                            </div>
                         </div>
-                        <div class="card-title">
-                            <h3>Understanding Virtual Labs and Microsoft Office</h3>
-                            <h4>Visvesvaraya Technological University, Belagavi</h4>
-                            <div class="timeline-date">Oct 2022 - Nov 2022</div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Explored Virtual Labs for hands-on learning through interactive, cloud-based simulations.</li>
+                                <li>Gained proficiency in Microsoft Office tools for document creation, data analysis, presentations, collaboration, and database management.</li>
+                                <li>Worked with MS Word, Excel, PowerPoint, Outlook, Teams, Access, and OneDrive to enhance productivity and efficiency.</li>
+                            </ul>
                         </div>
-                    </div>
-                    <div class="card-body">
-                        <ul>
-                            <li>Explored Virtual Labs for hands-on learning through interactive, cloud-based simulations.</li>
-                            <li>Gained proficiency in Microsoft Office tools for document creation, data analysis, presentations, collaboration, and database management.</li>
-                            <li>Worked with MS Word, Excel, PowerPoint, Outlook, Teams, Access, and OneDrive to enhance productivity and efficiency.</li>
-                        </ul>
-                    </div>
-                    <div class="card-footer">
-                        <span class="tech-used">Virtual Labs • Microsoft Office • Productivity Tools</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Timeline Item 7 -->
-            <div class="timeline-item">
-                <div class="timeline-icon">
-                    <i class="fas fa-briefcase"></i>
-                </div>
-                <div class="timeline-content card">
-                    <div class="card-header">
-                        <div class="company-logo">
-                            <a href="https://www.kaushalkar.com/" target="_blank">
-                                <img src="ksdc.jpeg" alt="KSDC">
-                            </a>
-                        </div>
-                        <div class="card-title">
-                            <h3>Documentation Assistant</h3>
-                            <h4>Karnataka Skill Development Corporation (KSDC)</h4>
-                            <div class="timeline-date">Sep 2021 - Dec 2021</div>
+                        <div class="card-footer">
+                            <span class="tech-used">Virtual Labs • Microsoft Office • Productivity Tools</span>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <ul>
-                            <li>Assisted in document creation, formatting, and management using MS Word, Excel, PowerPoint, and Access.</li>
-                            <li>Conducted data entry, analysis, and reporting with Excel formulas, pivot tables, and charts.</li>
-                            <li>Created structured reports, presentations, and databases to streamline workflow and record-keeping.</li>
-                            <li>Collaborated using OneDrive, SharePoint, and Teams for real-time document sharing and workflow optimization.</li>
-                        </ul>
+                </div>
+                
+                <!-- Timeline Item 7 -->
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-briefcase"></i>
                     </div>
-                    <div class="card-footer">
-                        <span class="tech-used">Documentation • MS Office • Data Analysis</span>
+                    <div class="timeline-content card">
+                        <div class="card-header">
+                            <div class="company-logo">
+                                <a href="https://www.kaushalkar.com/" target="_blank">
+                                    <img src="ksdc.jpeg" alt="KSDC">
+                                </a>
+                            </div>
+                            <div class="card-title">
+                                <h3>Documentation Assistant</h3>
+                                <h4>Karnataka Skill Development Corporation (KSDC)</h4>
+                                <div class="timeline-date">Sep 2021 - Dec 2021</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Assisted in document creation, formatting, and management using MS Word, Excel, PowerPoint, and Access.</li>
+                                <li>Conducted data entry, analysis, and reporting with Excel formulas, pivot tables, and charts.</li>
+                                <li>Created structured reports, presentations, and databases to streamline workflow and record-keeping.</li>
+                                <li>Collaborated using OneDrive, SharePoint, and Teams for real-time document sharing and workflow optimization.</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <span class="tech-used">Documentation • MS Office • Data Analysis</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
-<style>
-    /* Timeline Styles */
-    .timeline {
-        position: relative;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 40px 0;
-    }
-    
-    .timeline::after {
-        content: '';
-        position: absolute;
-        width: 6px;
-        background-color: #3498db;
-        top: 0;
-        bottom: 0;
-        left: 50%;
-        margin-left: -3px;
-        border-radius: 10px;
-    }
-    
-    .timeline-item {
-        padding: 10px 40px;
-        position: relative;
-        width: 50%;
-        box-sizing: border-box;
-        margin-bottom: 30px;
-    }
-    
-    .timeline-item:nth-child(odd) {
-        left: 0;
-    }
-    
-    .timeline-item:nth-child(even) {
-        left: 50%;
-    }
-    
-    .timeline-icon {
-        position: absolute;
-        width: 40px;
-        height: 40px;
-        background-color: #fff;
-        border: 4px solid #3498db;
-        border-radius: 50%;
-        text-align: center;
-        line-height: 32px;
-        font-size: 16px;
-        color: #3498db;
-        z-index: 1;
-        top: 20px;
-    }
-    
-    .timeline-item:nth-child(odd) .timeline-icon {
-        right: -20px;
-    }
-    
-    .timeline-item:nth-child(even) .timeline-icon {
-        left: -20px;
-    }
-    
-    /* Card Styles */
-    .timeline-content {
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .timeline-content:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    }
-    
-    .card-header {
-        display: flex;
-        align-items: center;
-        margin-bottom: 15px;
-    }
-    
-    .company-logo {
-        width: 60px;
-        height: 60px;
-        margin-right: 15px;
-        flex-shrink: 0;
-    }
-    
-    .company-logo img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        border-radius: 4px;
-    }
-    
-    .card-title h3 {
-        margin: 0;
-        color: #2c3e50;
-        font-size: 18px;
-    }
-    
-    .card-title h4 {
-        margin: 5px 0;
-        color: #7f8c8d;
-        font-size: 14px;
-        font-weight: normal;
-    }
-    
-    .timeline-date {
-        color: #3498db;
-        font-size: 13px;
-        font-weight: bold;
-    }
-    
-    .card-body ul {
-        padding-left: 20px;
-        margin: 10px 0;
-    }
-    
-    .card-body li {
-        margin-bottom: 8px;
-        line-height: 1.5;
-        color: #34495e;
-    }
-    
-    .card-footer {
-        margin-top: 15px;
-        padding-top: 10px;
-        border-top: 1px solid #ecf0f1;
-    }
-    
-    .tech-used {
-        color: #7f8c8d;
-        font-size: 13px;
-        font-style: italic;
-    }
-    
-    /* Responsive Design */
-    @media screen and (max-width: 768px) {
-        .timeline::after {
-            left: 31px;
-        }
-        
-        .timeline-item {
-            width: 100%;
-            padding-left: 70px;
-            padding-right: 25px;
-        }
-        
-        .timeline-item:nth-child(even) {
-            left: 0;
-        }
-        
-        .timeline-icon {
-            left: 11px !important;
-        }
-    }
-</style>
-
-
+    </section>
 
     <!-- Education Section with Flip Cards -->
     <section id="education" class="education">
@@ -2582,162 +2718,6 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </section>
 
-<style>
-/* Education Card Flip Styles */
-.education-card {
-            perspective: 1000px;
-            height: 250px;
-            cursor: pointer;
-        }
-
-        .education-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.6s;
-            transform-style: preserve-3d;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-radius: 10px;
-        }
-
-        .education-card:hover .education-card-inner {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        .education-card.flipped .education-card-inner {
-            transform: rotateY(180deg);
-        }
-
-        .education-card-front,
-        .education-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .education-card-back {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            transform: rotateY(180deg);
-        }
-
-        .education-features {
-            list-style: none;
-            padding: 0;
-            margin: 15px 0;
-        }
-
-        .education-features li {
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-            position: relative;
-            padding-left: 25px;
-        }
-
-        .education-features i {
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-        }
-
-        .education-links {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .education-link {
-            display: flex;
-            align-items: center;
-            padding: 8px 15px;
-            background: var(--primary);
-            color: white;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .education-link i {
-            margin-right: 8px;
-        }
-
-        .education-link:hover {
-            background: #2980b9;
-            transform: translateX(5px);
-        }
-
-        .flip-back-btn {
-            margin-top: 15px;
-            padding: 8px 15px;
-            background: #2c3e50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            align-self: flex-start;
-        }
-
-        .flip-back-btn:hover {
-            background: #1a252f;
-        }
-
-        .flip-back-btn i {
-            margin-right: 5px;
-        }
-</style>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Flip card functionality
-    const educationCards = document.querySelectorAll('.education-card');
-    
-    educationCards.forEach(card => {
-        // Click to flip
-        card.addEventListener('click', function(e) {
-            // Don't flip if clicking on a button
-            if (e.target.tagName === 'BUTTON' || 
-                e.target.parentElement.tagName === 'BUTTON') {
-                return;
-            }
-            this.classList.toggle('flipped');
-        });
-        
-        // Back button functionality
-        const backBtn = card.querySelector('.flip-back-btn');
-        if (backBtn) {
-            backBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                card.classList.remove('flipped');
-            });
-        }
-    });
-    
-    // Add hover effect for desktop only
-    if (window.innerWidth > 768) {
-        educationCards.forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                if (!this.classList.contains('flipped')) {
-                    this.style.transform = 'translateY(-5px)';
-                }
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = '';
-            });
-        });
-    }
-});
-</script>
     <!-- Projects Section with 3D Hover Effect -->
     <section id="projects" class="projects">
         <div class="container">
@@ -2821,407 +2801,306 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </section>
 
- <!-- Certificates Section with Flip Animation -->
-<section id="certificates" class="certificates">
-    <div class="container">
-        <div class="section-header">
-            <h2>Certificates & Achievements</h2>
-            <p>My professional certifications, courses, and accomplishments</p>
-        </div>
-        
-        <!-- Filter buttons -->
-        <div class="certificate-filters">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="course">Courses</button>
-            <button class="filter-btn" data-filter="offer">Offer Letters</button>
-            <button class="filter-btn" data-filter="training">Training</button>
-            <button class="filter-btn" data-filter="internship">Internships</button>
-            <button class="filter-btn" data-filter="webinar">Webinars</button>
-            <button class="filter-btn" data-filter="hackathon">Hackathons</button>
-        </div>
-        
-        <div class="certificates-grid">
-            
-            <!-- Courses -->
-            <div class="certificate-card" data-category="course">
-                <div class="certificate-image">
-                    <img src="Google IT Automation.png">
-                    <div class="certificate-overlay">
-                        <a href="https://www.coursera.org/account/accomplishments/professional-cert/PR3SA1SWHQ45" target="_blank" class="btn">View Certificate</a>
-                    </div>
-                </div>
-                <div class="certificate-info">
-                    <h3>Google IT Automation with Python</h3>
-                    <p>Coursera</p>
-                    <span class="certificate-date">Issued: Aug 2024</span>
-                    <span class="certificate-badge">Course</span>
-                </div>
-            </div>
-
-            <div class="certificate-card" data-category="course">
-                <div class="certificate-image">
-                    <img src="Google Project.png">
-                    <div class="certificate-overlay">
-                        <a href="https://www.coursera.org/account/accomplishments/professional-cert/QG00NQ8WNWH7" target="_blank" class="btn">View Certificate</a>
-                    </div>
-                </div>
-                <div class="certificate-info">
-                    <h3>Google Project Management</h3>
-                    <p>Coursera</p>
-                    <span class="certificate-date">Issued: Aug 2024</span>
-                    <span class="certificate-badge">Course</span>
-                </div>
-            </div>
-
-            <div class="certificate-card" data-category="course">
-                <div class="certificate-image">
-                    <img src="Google UX Design.png">
-                    <div class="certificate-overlay">
-                        <a href="https://www.coursera.org/account/accomplishments/professional-cert/B3OFBT1T2Q26" target="_blank" class="btn">View Certificate</a>
-                    </div>
-                </div>
-                <div class="certificate-info">
-                    <h3>Google UX Design</h3>
-                    <p>Coursera</p>
-                    <span class="certificate-date">Issued: Aug 2024</span>
-                    <span class="certificate-badge">Course</span>
-                </div>
-            </div>
-
-            <div class="certificate-card" data-category="course">
-                <div class="certificate-image">
-                    <img src="Google Cybersecurity.png">
-                    <div class="certificate-overlay">
-                        <a href="https://www.coursera.org/account/accomplishments/professional-cert/VFKAWBBPR3QR" target="_blank" class="btn">View Certificate</a>
-                    </div>
-                </div>
-                <div class="certificate-info">
-                    <h3>Google Cybersecurity</h3>
-                    <p>Coursera</p>
-                    <span class="certificate-date">Issued: Feb 2024</span>
-                    <span class="certificate-badge">Course</span>
-                </div>
-            </div>
-
-            <div class="certificate-card" data-category="course">
-                <div class="certificate-image">
-                    <img src="Google IT Support.png">
-                    <div class="certificate-overlay">
-                        <a href="https://www.coursera.org/account/accomplishments/professional-cert/C5MB8V0DZTT6" target="_blank" class="btn">View Certificate</a>
-                    </div>
-                </div>
-                <div class="certificate-info">
-                    <h3>Google IT Support</h3>
-                    <p>Coursera</p>
-                    <span class="certificate-date">Issued: Aug 2024</span>
-                    <span class="certificate-badge">Course</span>
-                </div>
-            </div>
-
-            <div class="certificate-card" data-category="course">
-                <div class="certificate-image">
-                    <img src="Google Data Analytics.png">
-                    <div class="certificate-overlay">
-                        <a href="https://www.coursera.org/account/accomplishments/professional-cert/1SL134DGTWU7" target="_blank" class="btn">View Certificate</a>
-                    </div>
-                </div>
-                <div class="certificate-info">
-                    <h3>Google Data Analytics</h3>
-                    <p>Coursera</p>
-                    <span class="certificate-date">Issued: Aug 2024</span>
-                    <span class="certificate-badge">Course</span>
-                </div>
-            </div>
-
-            <div class="certificate-card" data-category="course">
-                <div class="certificate-image">
-                    <img src="Google Advanced Data.png">
-                    <div class="certificate-overlay">
-                        <a href="https://www.coursera.org/account/accomplishments/professional-cert/BCM9DD7QWLTM" target="_blank" class="btn">View Certificate</a>
-                    </div>
-                </div>
-                <div class="certificate-info">
-                    <h3>Google Advanced Data Analytics</h3>
-                    <p>Coursera</p>
-                    <span class="certificate-date">Issued: Aug 2024</span>
-                    <span class="certificate-badge">Course</span>
-                </div>
-            </div>
-
-            <div class="certificate-card" data-category="course">
-                <div class="certificate-image">
-                    <img src="Google Business.png">
-                    <div class="certificate-overlay">
-                        <a href="https://www.coursera.org/account/accomplishments/professional-cert/OCERFFMSGT23" target="_blank" class="btn">View Certificate</a>
-                    </div>
-                </div>
-                <div class="certificate-info">
-                    <h3>Google Business Intelligence</h3>
-                    <p>Coursera</p>
-                    <span class="certificate-date">Issued: Aug 2024</span>
-                    <span class="certificate-badge">Course</span>
-                </div>
-            </div>
-
-            <div class="certificate-card" data-category="course">
-                <div class="certificate-image">
-                    <img src="ISRO AIML.png">
-                    <div class="certificate-overlay">
-                        <a href="https://www.coursera.org/account/accomplishments/professional-cert/OCERFFMSGT23" target="_blank" class="btn">View Certificate</a>
-                    </div>
-                </div>
-                <div class="certificate-info">
-                    <h3>AI/ML for GeoData Analysys</h3>
-                    <p>ISRO/IIRS</p>
-                    <span class="certificate-date">Issued: Sep 2024</span>
-                    <span class="certificate-badge">Course</span>
-                </div>
-            </div>
-
-            <div class="certificate-card" data-category="course">
-                <div class="certificate-image">
-                    <img src="HTML.png">
-                    <div class="certificate-overlay">
-                        <a href="https://www.coursera.org/account/accomplishments/professional-cert/OCERFFMSGT23" target="_blank" class="btn">View Certificate</a>
-                    </div>
-                </div>
-                <div class="certificate-info">
-                    <h3>HTML & CSS</h3>
-                    <p>bitLabs</p>
-                    <span class="certificate-date">Issued: Oct 2023</span>
-                    <span class="certificate-badge">Course</span>
-                </div>
-            </div>
-
-            <div class="certificate-card" data-category="course">
-                <div class="certificate-image">
-                    <img src="Python.png">
-                    <div class="certificate-overlay">
-                        <a href="https://www.coursera.org/account/accomplishments/professional-cert/OCERFFMSGT23" target="_blank" class="btn">View Certificate</a>
-                    </div>
-                </div>
-                <div class="certificate-info">
-                    <h3>Python</h3>
-                    <p>bitLabs</p>
-                    <span class="certificate-date">Issued: Oct 2023</span>
-                    <span class="certificate-badge">Course</span>
-                </div>
+    <!-- Certificates Section with Flip Animation -->
+    <section id="certificates" class="certificates">
+        <div class="container">
+            <div class="section-header">
+                <h2>Certificates & Achievements</h2>
+                <p>My professional certifications, courses, and accomplishments</p>
             </div>
             
-            <!-- Offer Letters -->
-            <div class="certificate-card" data-category="offer">
-                <div class="certificate-image">
-                    <img src="RGESI.png" alt="Job Offer">
-                    <div class="certificate-overlay">
-                        <a href="https://example.com/offer-letter" target="_blank" class="btn">View Letter</a>
-                    </div>
-                </div>
-                <div class="certificate-info">
-                    <h3>Research Intern</h3>
-                    <p>Innovate Tech</p>
-                    <span class="certificate-date">Received: Dec 2024</span>
-                    <span class="certificate-badge">Offer Letter</span>
-                </div>
-            </div>
-
-            <div class="certificate-card" data-category="offer">
-                <div class="certificate-image">
-                    <img src="Web Development.png" alt="Job Offer">
-                    <div class="certificate-overlay">
-                        <a href="#" target="_blank" class="btn">View Letter</a>
-                    </div>
-                </div>
-                <div class="certificate-info">
-                    <h3>Web Development</h3>
-                    <p>Web Developer</p>
-                    <span class="certificate-date">Received: Jan 2024</span>
-                    <span class="certificate-badge">Offer Letter</span>
-                </div>
-            </div>
-
-            <!-- Training -->
-            <div class="certificate-card" data-category="training">
-                <div class="certificate-image">
-                    <img src="ksdc.jpeg" alt="Cloud Training">
-                    <div class="certificate-overlay">
-                        <a href="#" target="_blank" class="btn">View Certificate</a>
-                    </div>
-                </div>
-                <div class="certificate-info">
-                    <h3>Documentation Assistant</h3>
-                    <p>Karnataka Skill development Corporation</p>
-                    <span class="certificate-date">Completed: Dec 2021</span>
-                    <span class="certificate-badge">Training</span>
-                </div>
-            </div>
-
-            <!-- Internships -->
-            <div class="certificate-card" data-category="internship">
-                <div class="certificate-image">
-                    <img src="codsoft intern.png" alt="Summer Internship">
-                    <div class="certificate-overlay">
-                        <a href="https://example.com/internship-cert" target="_blank" class="btn">View Certificate</a>
-                    </div>
-                </div>
-                <div class="certificate-info">
-                    <h3>Web Development Intern</h3>
-                    <p>CodSoft</p>
-                    <span class="certificate-date">20th Jan 2024 - 20th Feb 2024</span>
-                    <span class="certificate-badge">Internship</span>
-                </div>
-            </div>
-
-            <div class="certificate-card" data-category="internship">
-                <div class="certificate-image">
-                    <img src="cybersecurity intern.png" alt="Summer Internship">
-                    <div class="certificate-overlay">
-                        <a href="https://example.com/internship-cert" target="_blank" class="btn">View Certificate</a>
-                    </div>
-                </div>
-                <div class="certificate-info">
-                    <h3>Cyber Security Project Intern</h3>
-                    <p> CENTRE FOR DEVELOPMENT OF ADVANCED COMPUTING (C-DAC)</p>
-                    <span class="certificate-date">16th Dec 2024 - 30th Jan 2025</span>
-                    <span class="certificate-badge">Internship</span>
-                </div>
+            <!-- Filter buttons -->
+            <div class="certificate-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="course">Courses</button>
+                <button class="filter-btn" data-filter="offer">Offer Letters</button>
+                <button class="filter-btn" data-filter="training">Training</button>
+                <button class="filter-btn" data-filter="internship">Internships</button>
+                <button class="filter-btn" data-filter="webinar">Webinars</button>
+                <button class="filter-btn" data-filter="hackathon">Hackathons</button>
             </div>
             
-            <!-- Webinars -->
-            <div class="certificate-card" data-category="webinar">
-                <div class="certificate-image">
-                    <img src="Webinar VTU.png" alt="AI Webinar">
-                    <div class="certificate-overlay">
-                        <a href="https://example.com/webinar-cert" target="_blank" class="btn">View Certificate</a>
-                    </div>
-                </div>
-                <div class="certificate-info">
-                    <h3>AI & DS</h3>
-                    <p>Chapter-1 Prajnavistarah</p>
-                    <span class="certificate-date">Attended: Jun 2024</span>
-                    <span class="certificate-badge">Webinar</span>
-                </div>
-            </div>
-            
-            <!-- Hackathons -->
-            <div class="certificate-card" data-category="hackathon">
-                <div class="certificate-image">
-                    <img src="Hackthon.png" alt="Hackathon Winner">
-                    <div class="certificate-overlay">
-                        <a href="https://example.com/hackathon-cert" target="_blank" class="btn">View Certificate</a>
-                    </div>
-                </div>
-                <div class="certificate-info">
-                    <h3>HACK-2-INTERN</h3>
-                    <p>I received an internship offer through this hackathon for creating the most interactive website.</p>
-                    <span class="certificate-date">Sep 2024</span>
-                    <span class="certificate-badge">Hackathon</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<style>
-    /* Additional CSS for the enhanced certificates section */
-    .certificate-filters {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-        margin-bottom: 30px;
-    }
-    
-    .filter-btn {
-        padding: 8px 16px;
-        background: #f5f5f5;
-        border: none;
-        border-radius: 20px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-    
-    .filter-btn.active {
-        background: #3498db;
-        color: white;
-    }
-    
-    .filter-btn:hover {
-        background: #ddd;
-    }
-    
-    .filter-btn.active:hover {
-        background: #2980b9;
-    }
-    
-    .certificate-badge {
-        display: inline-block;
-        padding: 3px 8px;
-        background: #e74c3c;
-        color: white;
-        border-radius: 4px;
-        font-size: 12px;
-        margin-top: 5px;
-    }
-    
-    [data-category="certification"] .certificate-badge {
-        background: #3498db;
-    }
-    
-    [data-category="course"] .certificate-badge {
-        background: #2ecc71;
-    }
-    
-    [data-category="offer"] .certificate-badge {
-        background: #1abc9c;
-    }
-    
-    [data-category="training"] .certificate-badge {
-        background: #16a085;
-    }
-    
-    [data-category="internship"] .certificate-badge {
-        background: #9b59b6;
-    }
-    
-    [data-category="webinar"] .certificate-badge {
-        background: #f39c12;
-    }
-    
-    [data-category="hackathon"] .certificate-badge {
-        background: #e74c3c;
-    }
-    
-    [data-category="interactive"] .certificate-badge {
-        background: #34495e;
-    }
-</style>
-
-<script>
-    // JavaScript for filtering certificates
-    document.addEventListener('DOMContentLoaded', function() {
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const certificateCards = document.querySelectorAll('.certificate-card');
-        
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Update active button
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
+            <div class="certificates-grid">
                 
-                const filter = button.dataset.filter;
+                <!-- Courses -->
+                <div class="certificate-card" data-category="course">
+                    <div class="certificate-image">
+                        <img src="Google IT Automation.png">
+                        <div class="certificate-overlay">
+                            <a href="https://www.coursera.org/account/accomplishments/professional-cert/PR3SA1SWHQ45" target="_blank" class="btn">View Certificate</a>
+                        </div>
+                    </div>
+                    <div class="certificate-info">
+                        <h3>Google IT Automation with Python</h3>
+                        <p>Coursera</p>
+                        <span class="certificate-date">Issued: Aug 2024</span>
+                        <span class="certificate-badge">Course</span>
+                    </div>
+                </div>
+
+                <div class="certificate-card" data-category="course">
+                    <div class="certificate-image">
+                        <img src="Google Project.png">
+                        <div class="certificate-overlay">
+                            <a href="https://www.coursera.org/account/accomplishments/professional-cert/QG00NQ8WNWH7" target="_blank" class="btn">View Certificate</a>
+                        </div>
+                    </div>
+                    <div class="certificate-info">
+                        <h3>Google Project Management</h3>
+                        <p>Coursera</p>
+                        <span class="certificate-date">Issued: Aug 2024</span>
+                        <span class="certificate-badge">Course</span>
+                    </div>
+                </div>
+
+                <div class="certificate-card" data-category="course">
+                    <div class="certificate-image">
+                        <img src="Google UX Design.png">
+                        <div class="certificate-overlay">
+                            <a href="https://www.coursera.org/account/accomplishments/professional-cert/B3OFBT1T2Q26" target="_blank" class="btn">View Certificate</a>
+                        </div>
+                    </div>
+                    <div class="certificate-info">
+                        <h3>Google UX Design</h3>
+                        <p>Coursera</p>
+                        <span class="certificate-date">Issued: Aug 2024</span>
+                        <span class="certificate-badge">Course</span>
+                    </div>
+                </div>
+
+                <div class="certificate-card" data-category="course">
+                    <div class="certificate-image">
+                        <img src="Google Cybersecurity.png">
+                        <div class="certificate-overlay">
+                            <a href="https://www.coursera.org/account/accomplishments/professional-cert/VFKAWBBPR3QR" target="_blank" class="btn">View Certificate</a>
+                        </div>
+                    </div>
+                    <div class="certificate-info">
+                        <h3>Google Cybersecurity</h3>
+                        <p>Coursera</p>
+                        <span class="certificate-date">Issued: Feb 2024</span>
+                        <span class="certificate-badge">Course</span>
+                    </div>
+                </div>
+
+                <div class="certificate-card" data-category="course">
+                    <div class="certificate-image">
+                        <img src="Google IT Support.png">
+                        <div class="certificate-overlay">
+                            <a href="https://www.coursera.org/account/accomplishments/professional-cert/C5MB8V0DZTT6" target="_blank" class="btn">View Certificate</a>
+                        </div>
+                    </div>
+                    <div class="certificate-info">
+                        <h3>Google IT Support</h3>
+                        <p>Coursera</p>
+                        <span class="certificate-date">Issued: Aug 2024</span>
+                        <span class="certificate-badge">Course</span>
+                    </div>
+                </div>
+
+                <div class="certificate-card" data-category="course">
+                    <div class="certificate-image">
+                        <img src="Google Data Analytics.png">
+                        <div class="certificate-overlay">
+                            <a href="https://www.coursera.org/account/accomplishments/professional-cert/1SL134DGTWU7" target="_blank" class="btn">View Certificate</a>
+                        </div>
+                    </div>
+                    <div class="certificate-info">
+                        <h3>Google Data Analytics</h3>
+                        <p>Coursera</p>
+                        <span class="certificate-date">Issued: Aug 2024</span>
+                        <span class="certificate-badge">Course</span>
+                    </div>
+                </div>
+
+                <div class="certificate-card" data-category="course">
+                    <div class="certificate-image">
+                        <img src="Google Advanced Data.png">
+                        <div class="certificate-overlay">
+                            <a href="https://www.coursera.org/account/accomplishments/professional-cert/BCM9DD7QWLTM" target="_blank" class="btn">View Certificate</a>
+                        </div>
+                    </div>
+                    <div class="certificate-info">
+                        <h3>Google Advanced Data Analytics</h3>
+                        <p>Coursera</p>
+                        <span class="certificate-date">Issued: Aug 2024</span>
+                        <span class="certificate-badge">Course</span>
+                    </div>
+                </div>
+
+                <div class="certificate-card" data-category="course">
+                    <div class="certificate-image">
+                        <img src="Google Business.png">
+                        <div class="certificate-overlay">
+                            <a href="https://www.coursera.org/account/accomplishments/professional-cert/OCERFFMSGT23" target="_blank" class="btn">View Certificate</a>
+                        </div>
+                    </div>
+                    <div class="certificate-info">
+                        <h3>Google Business Intelligence</h3>
+                        <p>Coursera</p>
+                        <span class="certificate-date">Issued: Aug 2024</span>
+                        <span class="certificate-badge">Course</span>
+                    </div>
+                </div>
+
+                <div class="certificate-card" data-category="course">
+                    <div class="certificate-image">
+                        <img src="ISRO AIML.png">
+                        <div class="certificate-overlay">
+                            <a href="https://www.coursera.org/account/accomplishments/professional-cert/OCERFFMSGT23" target="_blank" class="btn">View Certificate</a>
+                        </div>
+                    </div>
+                    <div class="certificate-info">
+                        <h3>AI/ML for GeoData Analysys</h3>
+                        <p>ISRO/IIRS</p>
+                        <span class="certificate-date">Issued: Sep 2024</span>
+                        <span class="certificate-badge">Course</span>
+                    </div>
+                </div>
+
+                <div class="certificate-card" data-category="course">
+                    <div class="certificate-image">
+                        <img src="HTML.png">
+                        <div class="certificate-overlay">
+                            <a href="https://www.coursera.org/account/accomplishments/professional-cert/OCERFFMSGT23" target="_blank" class="btn">View Certificate</a>
+                        </div>
+                    </div>
+                    <div class="certificate-info">
+                        <h3>HTML & CSS</h3>
+                        <p>bitLabs</p>
+                        <span class="certificate-date">Issued: Oct 2023</span>
+                        <span class="certificate-badge">Course</span>
+                    </div>
+                </div>
+
+                <div class="certificate-card" data-category="course">
+                    <div class="certificate-image">
+                        <img src="Python.png">
+                        <div class="certificate-overlay">
+                            <a href="https://www.coursera.org/account/accomplishments/professional-cert/OCERFFMSGT23" target="_blank" class="btn">View Certificate</a>
+                        </div>
+                    </div>
+                    <div class="certificate-info">
+                        <h3>Python</h3>
+                        <p>bitLabs</p>
+                        <span class="certificate-date">Issued: Oct 2023</span>
+                        <span class="certificate-badge">Course</span>
+                    </div>
+                </div>
                 
-                // Filter cards
-                certificateCards.forEach(card => {
-                    if (filter === 'all' || card.dataset.category === filter) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-    });
-</script>
+                <!-- Offer Letters -->
+                <div class="certificate-card" data-category="offer">
+                    <div class="certificate-image">
+                        <img src="RGESI.png" alt="Job Offer">
+                        <div class="certificate-overlay">
+                            <a href="https://example.com/offer-letter" target="_blank" class="btn">View Letter</a>
+                        </div>
+                    </div>
+                    <div class="certificate-info">
+                        <h3>Research Intern</h3>
+                        <p>Innovate Tech</p>
+                        <span class="certificate-date">Received: Dec 2024</span>
+                        <span class="certificate-badge">Offer Letter</span>
+                    </div>
+                </div>
+
+                <div class="certificate-card" data-category="offer">
+                    <div class="certificate-image">
+                        <img src="Web Development.png" alt="Job Offer">
+                        <div class="certificate-overlay">
+                            <a href="#" target="_blank" class="btn">View Letter</a>
+                        </div>
+                    </div>
+                    <div class="certificate-info">
+                        <h3>Web Development</h3>
+                        <p>Web Developer</p>
+                        <span class="certificate-date">Received: Jan 2024</span>
+                        <span class="certificate-badge">Offer Letter</span>
+                    </div>
+                </div>
+
+                <!-- Training -->
+                <div class="certificate-card" data-category="training">
+                    <div class="certificate-image">
+                        <img src="ksdc.jpeg" alt="Cloud Training">
+                        <div class="certificate-overlay">
+                            <a href="#" target="_blank" class="btn">View Certificate</a>
+                        </div>
+                    </div>
+                    <div class="certificate-info">
+                        <h3>Documentation Assistant</h3>
+                        <p>Karnataka Skill development Corporation</p>
+                        <span class="certificate-date">Completed: Dec 2021</span>
+                        <span class="certificate-badge">Training</span>
+                    </div>
+                </div>
+
+                <!-- Internships -->
+                <div class="certificate-card" data-category="internship">
+                    <div class="certificate-image">
+                        <img src="codsoft intern.png" alt="Summer Internship">
+                        <div class="certificate-overlay">
+                            <a href="https://example.com/internship-cert" target="_blank" class="btn">View Certificate</a>
+                        </div>
+                    </div>
+                    <div class="certificate-info">
+                        <h3>Web Development Intern</h3>
+                        <p>CodSoft</p>
+                        <span class="certificate-date">20th Jan 2024 - 20th Feb 2024</span>
+                        <span class="certificate-badge">Internship</span>
+                    </div>
+                </div>
+
+                <div class="certificate-card" data-category="internship">
+                    <div class="certificate-image">
+                        <img src="cybersecurity intern.png" alt="Summer Internship">
+                        <div class="certificate-overlay">
+                            <a href="https://example.com/internship-cert" target="_blank" class="btn">View Certificate</a>
+                        </div>
+                    </div>
+                    <div class="certificate-info">
+                        <h3>Cyber Security Project Intern</h3>
+                        <p> CENTRE FOR DEVELOPMENT OF ADVANCED COMPUTING (C-DAC)</p>
+                        <span class="certificate-date">16th Dec 2024 - 30th Jan 2025</span>
+                        <span class="certificate-badge">Internship</span>
+                    </div>
+                </div>
+                
+                <!-- Webinars -->
+                <div class="certificate-card" data-category="webinar">
+                    <div class="certificate-image">
+                        <img src="Webinar VTU.png" alt="AI Webinar">
+                        <div class="certificate-overlay">
+                            <a href="https://example.com/webinar-cert" target="_blank" class="btn">View Certificate</a>
+                        </div>
+                    </div>
+                    <div class="certificate-info">
+                        <h3>AI & DS</h3>
+                        <p>Chapter-1 Prajnavistarah</p>
+                        <span class="certificate-date">Attended: Jun 2024</span>
+                        <span class="certificate-badge">Webinar</span>
+                    </div>
+                </div>
+                
+                <!-- Hackathons -->
+                <div class="certificate-card" data-category="hackathon">
+                    <div class="certificate-image">
+                        <img src="Hackthon.png" alt="Hackathon Winner">
+                        <div class="certificate-overlay">
+                            <a href="https://example.com/hackathon-cert" target="_blank" class="btn">View Certificate</a>
+                        </div>
+                    </div>
+                    <div class="certificate-info">
+                        <h3>HACK-2-INTERN</h3>
+                        <p>I received an internship offer through this hackathon for creating the most interactive website.</p>
+                        <span class="certificate-date">Sep 2024</span>
+                        <span class="certificate-badge">Hackathon</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section with Form Animation -->
     <section id="contact" class="contact">
         <div class="container">
@@ -3265,31 +3144,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         </a>
                     </div>
                 </div>
-                <style>
-                    .contact-details {
-                        display: flex;
-                        flex-direction: column;
-                        gap: 12px;
-                    }
-                    .contact-item {
-                        display: flex;
-                        align-items: center;
-                        gap: 12px;
-                        font-size: 16px;
-                    }
-                    .contact-item img {
-                        opacity: 0.8;
-                        transition: opacity 0.3s ease;
-                    }
-                    .contact-item:hover img {
-                        opacity: 1;
-                    }
-                    .contact-item span {
-                        color: #333;
-                    }
-                </style>
                 <div class="contact-form">
                     <form id="contactForm">
+                        <div id="formStatus" class="form-status"></div>
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
@@ -3355,6 +3212,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <!-- JavaScript -->
     <script>
+        // Initialize EmailJS with your user ID
+        (function() {
+            emailjs.init('user_sc406850_gmail_com'); // Replace with your actual EmailJS user ID
+        })();
+
         // Preloader with Animation
         window.addEventListener('load', () => {
             const preloader = document.querySelector('.preloader');
@@ -3570,8 +3432,32 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // Form Submission with Animation
+        // Certificates Filter
+        const certFilterBtns = document.querySelectorAll('.certificate-filters .filter-btn');
+        const certificateCards = document.querySelectorAll('.certificate-card');
+        
+        certFilterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                certFilterBtns.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                certificateCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Form Submission with EmailJS
         const contactForm = document.getElementById('contactForm');
+        const formStatus = document.getElementById('formStatus');
         
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -3582,39 +3468,85 @@ document.addEventListener('DOMContentLoaded', function() {
             const subject = document.getElementById('subject').value;
             const message = document.getElementById('message').value;
             
-            // Here you would typically send the form data to a server
-            // For this example, we'll just log it and show an alert
-            console.log({ name, email, subject, message });
-            
-            // Show success message with animation
+            // Show loading state
             const submitBtn = document.querySelector('.submit-btn');
-            submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-            submitBtn.style.backgroundColor = 'var(--success)';
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             
-            setTimeout(() => {
+            // Send email using EmailJS
+            emailjs.send('service_your_service_id', 'template_your_template_id', {
+                from_name: name,
+                from_email: email,
+                subject: subject,
+                message: message
+            })
+            .then(() => {
+                // Show success message
+                formStatus.textContent = 'Message sent successfully!';
+                formStatus.className = 'form-status success';
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Reset button state
                 submitBtn.innerHTML = 'Send Message';
-                submitBtn.style.backgroundColor = '';
-            }, 3000);
-            
-            // Reset form
-            contactForm.reset();
+                submitBtn.disabled = false;
+                
+                // Hide status message after 5 seconds
+                setTimeout(() => {
+                    formStatus.textContent = '';
+                    formStatus.className = 'form-status';
+                }, 5000);
+            }, (error) => {
+                // Show error message
+                formStatus.textContent = 'Failed to send message. Please try again.';
+                formStatus.className = 'form-status error';
+                
+                // Reset button state
+                submitBtn.innerHTML = 'Send Message';
+                submitBtn.disabled = false;
+                
+                console.error('EmailJS Error:', error);
+            });
         });
 
-        // Text Animation for Hero Section
-        const heroText = document.querySelector('.hero-text');
-        if (heroText) {
-            const text = heroText.querySelector('h1').textContent;
-            heroText.querySelector('h1').textContent = '';
-            
-            let i = 0;
-            const typingEffect = setInterval(() => {
-                if (i < text.length) {
-                    heroText.querySelector('h1').textContent += text.charAt(i);
-                    i++;
-                } else {
-                    clearInterval(typingEffect);
+        // Flip card functionality
+        const educationCards = document.querySelectorAll('.education-card');
+        
+        educationCards.forEach(card => {
+            // Click to flip
+            card.addEventListener('click', function(e) {
+                // Don't flip if clicking on a button
+                if (e.target.tagName === 'BUTTON' || 
+                    e.target.parentElement.tagName === 'BUTTON') {
+                    return;
                 }
-            }, 100);
+                this.classList.toggle('flipped');
+            });
+            
+            // Back button functionality
+            const backBtn = card.querySelector('.flip-back-btn');
+            if (backBtn) {
+                backBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    card.classList.remove('flipped');
+                });
+            }
+        });
+        
+        // Add hover effect for desktop only
+        if (window.innerWidth > 768) {
+            educationCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    if (!this.classList.contains('flipped')) {
+                        this.style.transform = 'translateY(-5px)';
+                    }
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
+                });
+            });
         }
 
         // Initialize all effects when DOM is loaded
@@ -3640,6 +3572,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 card.addEventListener('mouseleave', () => {
                     card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+                });
+            });
+        });
+
+        // Make skills interactive
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillTags = document.querySelectorAll('.skill-tag');
+            
+            skillTags.forEach(tag => {
+                tag.addEventListener('click', function() {
+                    this.classList.toggle('highlighted');
                 });
             });
         });
