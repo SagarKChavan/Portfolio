@@ -704,167 +704,246 @@
             50% { transform: translateY(-15px); }
         }
         
-        /* Experience Timeline with Animated Cards */
-        .experience {
-            background-color: var(--light);
-            position: relative;
-        }
-        
-        .timeline {
-            position: relative;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 3rem 0;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            width: 4px;
-            background: var(--gradient-primary);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
-        
-        .timeline-item {
-            padding: 1.5rem 3rem;
-            position: relative;
-            width: 50%;
-            box-sizing: border-box;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.5s ease;
-        }
-        
-        .timeline-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .timeline-item:nth-child(odd) {
-            left: 0;
-            padding-right: 0;
-            padding-left: 3rem;
-            animation-delay: 0.2s;
-        }
-        
-        .timeline-item:nth-child(even) {
-            left: 50%;
-            padding-left: 0;
-            padding-right: 3rem;
-            animation-delay: 0.4s;
-        }
-        
-        .timeline-content {
-            padding: 2rem;
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: var(--shadow-md);
-            position: relative;
-            transition: var(--transition);
-            transform-style: preserve-3d;
-        }
-        
-        .timeline-content:hover {
-            transform: translateY(-10px) rotateX(5deg);
-            box-shadow: var(--shadow-xl);
-        }
-        
-        .timeline-content::before {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: white;
-            top: 30px;
-            transform: rotate(45deg);
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-content::before {
-            right: -10px;
-        }
-        
-        .timeline-item:nth-child(even) .timeline-content::before {
-            left: -10px;
-        }
-        
-        .timeline-date {
-            position: absolute;
-            width: 150px;
-            background: var(--gradient-primary);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 30px;
-            text-align: center;
-            font-weight: 600;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-date {
-            right: -180px;
-            top: 30px;
-        }
-        
-        .timeline-item:nth-child(even) .timeline-date {
-            left: -180px;
-            top: 30px;
-        }
-        
-        .timeline-content h3 {
-            margin-bottom: 0.5rem;
-            color: var(--primary);
-        }
-        
-        .timeline-content h4 {
-            margin-bottom: 1rem;
-            color: var(--darker);
-        }
-        
-        .timeline-content p {
-            color: #6b7280;
-        }
-        
-        .timeline-icon {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-md);
-            top: 20px;
-            transition: var(--transition);
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-icon {
-            right: -25px;
-        }
-        
-        .timeline-item:nth-child(even) .timeline-icon {
-            left: -25px;
-        }
-        
-        .timeline-item:hover .timeline-icon {
-            transform: scale(1.1) rotate(15deg);
-        }
+ /* Experience Timeline with Animated Cards - Enhanced Version */
+.experience {
+    background-color: var(--light);
+    position: relative;
+    padding: 6rem 0;
+}
 
-        .company-logo {
-            margin-bottom: 15px;
-        }
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 0;
+}
 
-        .company-logo img {
-            max-height: 50px;
-            max-width: 150px;
-            object-fit: contain;
-        }
+.timeline::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background: var(--gradient-primary);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+    z-index: 1;
+}
+
+.timeline-item {
+    padding: 1.5rem 3rem;
+    position: relative;
+    width: 50%;
+    box-sizing: border-box;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.5s ease;
+    margin-bottom: 2rem;
+}
+
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+    padding-right: 0;
+    padding-left: 3rem;
+    animation-delay: 0.2s;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+    padding-left: 0;
+    padding-right: 3rem;
+    animation-delay: 0.4s;
+}
+
+.timeline-content {
+    padding: 2rem;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: var(--shadow-md);
+    position: relative;
+    transition: var(--transition);
+    transform-style: preserve-3d;
+    margin: 0 1rem;
+}
+
+.timeline-content:hover {
+    transform: translateY(-10px) rotateX(5deg);
+    box-shadow: var(--shadow-xl);
+}
+
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    top: 30px;
+    transform: rotate(45deg);
+    box-shadow: var(--shadow-sm);
+    z-index: 1;
+}
+
+.timeline-item:nth-child(odd) .timeline-content::before {
+    right: -10px;
+}
+
+.timeline-item:nth-child(even) .timeline-content::before {
+    left: -10px;
+}
+
+.timeline-date {
+    position: absolute;
+    width: 150px;
+    background: var(--gradient-primary);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    text-align: center;
+    font-weight: 600;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    z-index: 2;
+}
+
+.timeline-item:nth-child(odd) .timeline-date {
+    right: -180px;
+    top: 30px;
+}
+
+.timeline-item:nth-child(even) .timeline-date {
+    left: -180px;
+    top: 30px;
+}
+
+.timeline-icon {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: var(--gradient-primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-md);
+    top: 20px;
+    transition: var(--transition);
+    z-index: 2;
+}
+
+.timeline-item:nth-child(odd) .timeline-icon {
+    right: -25px;
+}
+
+.timeline-item:nth-child(even) .timeline-icon {
+    left: -25px;
+}
+
+.timeline-item:hover .timeline-icon {
+    transform: scale(1.1) rotate(15deg);
+}
+
+.company-logo {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.company-logo img {
+    max-height: 50px;
+    max-width: 150px;
+    object-fit: contain;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+    .timeline-item:nth-child(odd) .timeline-date {
+        right: -160px;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-date {
+        left: -160px;
+    }
+}
+
+@media (max-width: 992px) {
+    .timeline::before {
+        left: 31px;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+    
+    .timeline-item:nth-child(even) {
+        left: 0;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-date,
+    .timeline-item:nth-child(even) .timeline-date {
+        left: 15px;
+        right: auto;
+        top: 15px;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-icon,
+    .timeline-item:nth-child(even) .timeline-icon {
+        left: 10px;
+        right: auto;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-content::before,
+    .timeline-item:nth-child(even) .timeline-content::before {
+        left: -10px;
+        right: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .timeline-item {
+        padding-left: 50px;
+    }
+    
+    .timeline-date {
+        width: 120px;
+        font-size: 0.8rem;
+    }
+    
+    .timeline-content {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .timeline-item {
+        padding-left: 40px;
+        padding-right: 15px;
+    }
+    
+    .timeline-date {
+        width: 100px;
+        font-size: 0.7rem;
+        padding: 0.3rem 0.5rem;
+    }
+    
+    .timeline-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 0.9rem;
+    }
+    
+    .company-logo img {
+        max-height: 40px;
+        max-width: 120px;
+    }
+}
         
         /* Education Section with Flip Cards */
         .education {
@@ -888,6 +967,8 @@
             overflow: hidden;
             border-left: 4px solid var(--primary);
             perspective: 1000px;
+            height: 250px;
+            cursor: pointer;
         }
 
         .education-card:hover {
@@ -1400,6 +1481,27 @@
         .submit-btn:hover {
             transform: translateY(-3px);
         }
+
+        /* Form status messages */
+        .form-status {
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            display: none;
+        }
+
+        .form-status.success {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            display: block;
+        }
+
+        .form-status.error {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            display: block;
+        }
         
         /* Footer with Wave Animation */
         footer {
@@ -1844,7 +1946,7 @@
             color: #2ecc71;
         }
 
-        /* Additional CSS for the enhanced certificates section */
+        /* Certificate filter buttons */
         .certificate-filters {
             display: flex;
             flex-wrap: wrap;
@@ -1895,13 +1997,7 @@
             background: #34495e;
         }
 
-        /* Education Card Flip Styles */
-        .education-card {
-            perspective: 1000px;
-            height: 250px;
-            cursor: pointer;
-        }
-
+        /* Education card flip styles */
         .education-card-inner {
             position: relative;
             width: 100%;
@@ -2007,159 +2103,160 @@
             margin-right: 5px;
         }
 
-        /* Timeline Styles */
-        .timeline {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 0;
+        /* New 3D hover effect for cards */
+        .hover-3d {
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            transform-style: preserve-3d;
         }
-        
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 6px;
-            background-color: #3498db;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -3px;
+
+        .hover-3d:hover {
+            transform: perspective(1000px) rotateX(5deg) rotateY(5deg) translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        /* Pulse animation for call-to-action elements */
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Floating animation for elements */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Gradient text */
+        .gradient-text {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
             border-radius: 10px;
         }
-        
-        .timeline-item {
-            padding: 10px 40px;
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Tooltip styles */
+        .tooltip {
             position: relative;
-            width: 50%;
-            box-sizing: border-box;
-            margin-bottom: 30px;
+            display: inline-block;
         }
-        
-        .timeline-item:nth-child(odd) {
-            left: 0;
-        }
-        
-        .timeline-item:nth-child(even) {
-            left: 50%;
-        }
-        
-        .timeline-icon {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            background-color: #fff;
-            border: 4px solid #3498db;
-            border-radius: 50%;
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: var(--dark);
+            color: #fff;
             text-align: center;
-            line-height: 32px;
-            font-size: 16px;
-            color: #3498db;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
             z-index: 1;
-            top: 20px;
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-icon {
-            right: -20px;
-        }
-        
-        .timeline-item:nth-child(even) .timeline-icon {
-            left: -20px;
-        }
-        
-        /* Card Styles */
-        .timeline-content {
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .timeline-content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-        
-        .card-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        
-        .company-logo {
-            width: 60px;
-            height: 60px;
-            margin-right: 15px;
-            flex-shrink: 0;
-        }
-        
-        .company-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 4px;
-        }
-        
-        .card-title h3 {
-            margin: 0;
-            color: #2c3e50;
-            font-size: 18px;
-        }
-        
-        .card-title h4 {
-            margin: 5px 0;
-            color: #7f8c8d;
-            font-size: 14px;
-            font-weight: normal;
-        }
-        
-        .timeline-date {
-            color: #3498db;
-            font-size: 13px;
-            font-weight: bold;
-        }
-        
-        .card-body ul {
-            padding-left: 20px;
-            margin: 10px 0;
-        }
-        
-        .card-body li {
-            margin-bottom: 8px;
-            line-height: 1.5;
-            color: #34495e;
-        }
-        
-        .card-footer {
-            margin-top: 15px;
-            padding-top: 10px;
-            border-top: 1px solid #ecf0f1;
-        }
-        
-        .tech-used {
-            color: #7f8c8d;
-            font-size: 13px;
-            font-style: italic;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
         }
 
-        /* Form status messages */
-        .form-status {
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            display: none;
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: var(--dark) transparent transparent transparent;
         }
 
-        .form-status.success {
-            background-color: #d4edda;
-            color: #155724;
-            display: block;
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
         }
 
-        .form-status.error {
-            background-color: #f8d7da;
-            color: #721c24;
-            display: block;
+        /* Confetti effect */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: var(--primary);
+            opacity: 0;
+            z-index: 9999;
+            animation: confetti-fall 5s linear forwards;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Glow effect */
+        .glow {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 5px rgba(37, 99, 235, 0.5);
+            }
+            to {
+                box-shadow: 0 0 20px rgba(37, 99, 235, 0.8);
+            }
+        }
+
+        /* Ripple effect */
+        .ripple {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ripple-effect {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            pointer-events: none;
+        }
+
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
         }
     </style>
 </head>
@@ -2201,36 +2298,41 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1>Hi, I'm <span>Sagar Chavan</span></h1>
-                    <h2>Software Developer | Full Stack Developer</h2>
+                    <h1>Hi, I'm <span class="gradient-text">Sagar K Chavan</span></h1>
+                    <h2>Software Engineer | Full Stack Developer</h2>
                     <p>I build exceptional digital experiences with modern web technologies. Focused on creating scalable, performant applications with intuitive user interfaces.</p>
                     <div class="btn-group">
-                        <a href="#contact" class="btn">Get In Touch</a>
+                        <a href="#contact" class="btn pulse">Get In Touch</a>
                         <a href="#projects" class="btn btn-outline">View My Work</a>
                         <a href="Resume.pdf" class="btn btn-resume" download>
                             <i class="fas fa-download"></i> Download Resume
                         </a>
                     </div>
                     <div class="social-icons">
-                        <a href="https://www.linkedin.com/in/sagar-k-chavan/" target="_blank" aria-label="LinkedIn">
-                            <img src="linkedin.png" width="24" alt="LinkedIn">
+                        <a href="https://www.linkedin.com/in/sagar-k-chavan/" target="_blank" aria-label="LinkedIn" class="tooltip">
+                            <i class="fab fa-linkedin-in"></i>
+                            <span class="tooltiptext">LinkedIn</span>
                         </a>
-                        <a href="https://github.com/SagarKChavan" target="_blank" aria-label="GitHub">
-                            <img src="github.png" width="24" alt="GitHub">
+                        <a href="https://github.com/SagarKChavan" target="_blank" aria-label="GitHub" class="tooltip">
+                            <i class="fab fa-github"></i>
+                            <span class="tooltiptext">GitHub</span>
                         </a>
-                        <a href="https://x.com/SAGARCHAVA57787" target="_blank" aria-label="Twitter">
-                            <img src="twitter.png" width="24" alt="Twitter">
+                        <a href="https://x.com/SAGARCHAVA57787" target="_blank" aria-label="Twitter" class="tooltip">
+                            <i class="fab fa-twitter"></i>
+                            <span class="tooltiptext">Twitter</span>
                         </a>
-                        <a href="https://www.facebook.com/profile.php?id=100056524020635" target="_blank" aria-label="Facebook">
-                            <img src="facebook.png" width="24" alt="Facebook">
+                        <a href="https://www.facebook.com/profile.php?id=100056524020635" target="_blank" aria-label="Facebook" class="tooltip">
+                            <i class="fab fa-facebook-f"></i>
+                            <span class="tooltiptext">Facebook</span>
                         </a>
-                        <a href="https://www.instagram.com/sagar_k_chavan2/" target="_blank" aria-label="Instagram">
-                            <img src="instagram.png" width="24" alt="Instagram">
+                        <a href="https://www.instagram.com/sagar_k_chavan2/" target="_blank" aria-label="Instagram" class="tooltip">
+                            <i class="fab fa-instagram"></i>
+                            <span class="tooltiptext">Instagram</span>
                         </a>
                     </div>
                 </div>
                 <div class="hero-image">
-                    <div class="hero-image-container">
+                    <div class="hero-image-container hover-3d">
                         <img src="Shankar.jpg" alt="Sagar K. Chavan">
                     </div>
                 </div>
@@ -2258,7 +2360,7 @@
                         <div class="skills-category">
                             <h4 class="skills-category-title">Technical Skills</h4>
                             <div class="skills-grid">
-                                <div class="skill-category">
+                                <div class="skill-category hover-3d">
                                     <h5>Programming Languages</h5>
                                     <div class="skill-tags">
                                         <span class="skill-tag">C</span>
@@ -2270,7 +2372,7 @@
                                     </div>
                                 </div>
                                 
-                                <div class="skill-category">
+                                <div class="skill-category hover-3d">
                                     <h5>Web Development</h5>
                                     <div class="skill-tags">
                                         <span class="skill-tag">HTML</span>
@@ -2279,14 +2381,14 @@
                                     </div>
                                 </div>
                                 
-                                <div class="skill-category">
+                                <div class="skill-category hover-3d">
                                     <h5>Database Management</h5>
                                     <div class="skill-tags">
                                         <span class="skill-tag">SQL</span>
                                     </div>
                                 </div>
                                 
-                                <div class="skill-category">
+                                <div class="skill-category hover-3d">
                                     <h5>Cybersecurity</h5>
                                     <div class="skill-tags">
                                         <span class="skill-tag">Network Security</span>
@@ -2295,7 +2397,7 @@
                                     </div>
                                 </div>
                                 
-                                <div class="skill-category">
+                                <div class="skill-category hover-3d">
                                     <h5>Tools & Technologies</h5>
                                     <div class="skill-tags">
                                         <span class="skill-tag">VS Code</span>
@@ -2307,7 +2409,7 @@
                                     </div>
                                 </div>
                                 
-                                <div class="skill-category">
+                                <div class="skill-category hover-3d">
                                     <h5>Project Management</h5>
                                     <div class="skill-tags">
                                         <span class="skill-tag">Agile Methodologies</span>
@@ -2315,7 +2417,7 @@
                                     </div>
                                 </div>
                                 
-                                <div class="skill-category">
+                                <div class="skill-category hover-3d">
                                     <h5>App Development</h5>
                                     <div class="skill-tags">
                                         <span class="skill-tag">UI/UX Design</span>
@@ -2340,7 +2442,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="about-image">
+                <div class="about-image floating">
                     <img src="me2.jpg" alt="About Me">
                     <div class="about-badge">
                         <span>1+</span>
@@ -2364,7 +2466,7 @@
                     <div class="timeline-icon">
                         <i class="fas fa-briefcase"></i>
                     </div>
-                    <div class="timeline-content card">
+                    <div class="timeline-content card hover-3d">
                         <div class="card-header">
                             <div class="company-logo">
                                 <a href="https://www.rgesindia.com/" target="_blank">
@@ -2397,7 +2499,7 @@
                     <div class="timeline-icon">
                         <i class="fas fa-briefcase"></i>
                     </div>
-                    <div class="timeline-content card">
+                    <div class="timeline-content card hover-3d">
                         <div class="card-header">
                             <div class="company-logo">
                                 <a href="https://www.cdac.in/" target="_blank">
@@ -2429,7 +2531,7 @@
                     <div class="timeline-icon">
                         <i class="fas fa-briefcase"></i>
                     </div>
-                    <div class="timeline-content card">
+                    <div class="timeline-content card hover-3d">
                         <div class="card-header">
                             <div class="company-logo">
                                 <a href="https://codsoft.in/" target="_blank">
@@ -2461,7 +2563,7 @@
                     <div class="timeline-icon">
                         <i class="fas fa-briefcase"></i>
                     </div>
-                    <div class="timeline-content card">
+                    <div class="timeline-content card hover-3d">
                         <div class="card-header">
                             <div class="company-logo">
                                 <a href="https://vtu.ac.in/" target="_blank">
@@ -2493,7 +2595,7 @@
                     <div class="timeline-icon">
                         <i class="fas fa-briefcase"></i>
                     </div>
-                    <div class="timeline-content card">
+                    <div class="timeline-content card hover-3d">
                         <div class="card-header">
                             <div class="company-logo">
                                 <a href="https://vtu.ac.in/" target="_blank">
@@ -2524,7 +2626,7 @@
                     <div class="timeline-icon">
                         <i class="fas fa-briefcase"></i>
                     </div>
-                    <div class="timeline-content card">
+                    <div class="timeline-content card hover-3d">
                         <div class="card-header">
                             <div class="company-logo">
                                 <a href="https://vtu.ac.in/" target="_blank">
@@ -2555,7 +2657,7 @@
                     <div class="timeline-icon">
                         <i class="fas fa-briefcase"></i>
                     </div>
-                    <div class="timeline-content card">
+                    <div class="timeline-content card hover-3d">
                         <div class="card-header">
                             <div class="company-logo">
                                 <a href="https://www.kaushalkar.com/" target="_blank">
@@ -2732,7 +2834,7 @@
                 <button class="filter-btn" data-filter="design">Design</button>
             </div>
             <div class="projects-grid">
-                <div class="project-card visible" data-category="web">
+                <div class="project-card visible hover-3d" data-category="web">
                     <div class="project-image">
                         <img src="RGES WEB.png" alt="Project 1">
                         <div class="project-overlay">
@@ -2754,7 +2856,7 @@
                     </div>
                 </div>
 
-                <div class="project-card visible" data-category="web mobile">
+                <div class="project-card visible hover-3d" data-category="web mobile">
                     <div class="project-image">
                         <img src="Portfolio.png" alt="Project 2">
                         <div class="project-overlay">
@@ -2776,7 +2878,7 @@
                     </div>
                 </div>
 
-                <div class="project-card visible" data-category="web design">
+                <div class="project-card visible hover-3d" data-category="web design">
                     <div class="project-image">
                         <img src="PATS.png" alt="Project 3">
                         <div class="project-overlay">
@@ -2823,7 +2925,7 @@
             <div class="certificates-grid">
                 
                 <!-- Courses -->
-                <div class="certificate-card" data-category="course">
+                <div class="certificate-card hover-3d" data-category="course">
                     <div class="certificate-image">
                         <img src="Google IT Automation.png">
                         <div class="certificate-overlay">
@@ -2838,7 +2940,7 @@
                     </div>
                 </div>
 
-                <div class="certificate-card" data-category="course">
+                <div class="certificate-card hover-3d" data-category="course">
                     <div class="certificate-image">
                         <img src="Google Project.png">
                         <div class="certificate-overlay">
@@ -2853,7 +2955,7 @@
                     </div>
                 </div>
 
-                <div class="certificate-card" data-category="course">
+                <div class="certificate-card hover-3d" data-category="course">
                     <div class="certificate-image">
                         <img src="Google UX Design.png">
                         <div class="certificate-overlay">
@@ -2868,7 +2970,7 @@
                     </div>
                 </div>
 
-                <div class="certificate-card" data-category="course">
+                <div class="certificate-card hover-3d" data-category="course">
                     <div class="certificate-image">
                         <img src="Google Cybersecurity.png">
                         <div class="certificate-overlay">
@@ -2883,7 +2985,7 @@
                     </div>
                 </div>
 
-                <div class="certificate-card" data-category="course">
+                <div class="certificate-card hover-3d" data-category="course">
                     <div class="certificate-image">
                         <img src="Google IT Support.png">
                         <div class="certificate-overlay">
@@ -2898,7 +3000,7 @@
                     </div>
                 </div>
 
-                <div class="certificate-card" data-category="course">
+                <div class="certificate-card hover-3d" data-category="course">
                     <div class="certificate-image">
                         <img src="Google Data Analytics.png">
                         <div class="certificate-overlay">
@@ -2913,7 +3015,7 @@
                     </div>
                 </div>
 
-                <div class="certificate-card" data-category="course">
+                <div class="certificate-card hover-3d" data-category="course">
                     <div class="certificate-image">
                         <img src="Google Advanced Data.png">
                         <div class="certificate-overlay">
@@ -2928,7 +3030,7 @@
                     </div>
                 </div>
 
-                <div class="certificate-card" data-category="course">
+                <div class="certificate-card hover-3d" data-category="course">
                     <div class="certificate-image">
                         <img src="Google Business.png">
                         <div class="certificate-overlay">
@@ -2943,7 +3045,7 @@
                     </div>
                 </div>
 
-                <div class="certificate-card" data-category="course">
+                <div class="certificate-card hover-3d" data-category="course">
                     <div class="certificate-image">
                         <img src="ISRO AIML.png">
                         <div class="certificate-overlay">
@@ -2958,7 +3060,7 @@
                     </div>
                 </div>
 
-                <div class="certificate-card" data-category="course">
+                <div class="certificate-card hover-3d" data-category="course">
                     <div class="certificate-image">
                         <img src="HTML.png">
                         <div class="certificate-overlay">
@@ -2973,7 +3075,7 @@
                     </div>
                 </div>
 
-                <div class="certificate-card" data-category="course">
+                <div class="certificate-card hover-3d" data-category="course">
                     <div class="certificate-image">
                         <img src="Python.png">
                         <div class="certificate-overlay">
@@ -2989,7 +3091,7 @@
                 </div>
                 
                 <!-- Offer Letters -->
-                <div class="certificate-card" data-category="offer">
+                <div class="certificate-card hover-3d" data-category="offer">
                     <div class="certificate-image">
                         <img src="RGESI.png" alt="Job Offer">
                         <div class="certificate-overlay">
@@ -3004,7 +3106,7 @@
                     </div>
                 </div>
 
-                <div class="certificate-card" data-category="offer">
+                <div class="certificate-card hover-3d" data-category="offer">
                     <div class="certificate-image">
                         <img src="Web Development.png" alt="Job Offer">
                         <div class="certificate-overlay">
@@ -3020,7 +3122,7 @@
                 </div>
 
                 <!-- Training -->
-                <div class="certificate-card" data-category="training">
+                <div class="certificate-card hover-3d" data-category="training">
                     <div class="certificate-image">
                         <img src="ksdc.jpeg" alt="Cloud Training">
                         <div class="certificate-overlay">
@@ -3036,7 +3138,7 @@
                 </div>
 
                 <!-- Internships -->
-                <div class="certificate-card" data-category="internship">
+                <div class="certificate-card hover-3d" data-category="internship">
                     <div class="certificate-image">
                         <img src="codsoft intern.png" alt="Summer Internship">
                         <div class="certificate-overlay">
@@ -3051,7 +3153,7 @@
                     </div>
                 </div>
 
-                <div class="certificate-card" data-category="internship">
+                <div class="certificate-card hover-3d" data-category="internship">
                     <div class="certificate-image">
                         <img src="cybersecurity intern.png" alt="Summer Internship">
                         <div class="certificate-overlay">
@@ -3067,7 +3169,7 @@
                 </div>
                 
                 <!-- Webinars -->
-                <div class="certificate-card" data-category="webinar">
+                <div class="certificate-card hover-3d" data-category="webinar">
                     <div class="certificate-image">
                         <img src="Webinar VTU.png" alt="AI Webinar">
                         <div class="certificate-overlay">
@@ -3083,7 +3185,7 @@
                 </div>
                 
                 <!-- Hackathons -->
-                <div class="certificate-card" data-category="hackathon">
+                <div class="certificate-card hover-3d" data-category="hackathon">
                     <div class="certificate-image">
                         <img src="Hackthon.png" alt="Hackathon Winner">
                         <div class="certificate-overlay">
@@ -3114,39 +3216,44 @@
                     <p>I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, I'll get back to you as soon as possible!</p>
                     <div class="contact-details">
                         <div class="contact-item">
-                            <img src="gmail.png" alt="Email" width="20">
-                            <span>sagarkchavan22@gmail.com</span>
+                            <i class="fas fa-envelope"></i>
+                            <span>sc406850@gmail.com</span>
                         </div>
                         <div class="contact-item">
-                            <img src="call.png" alt="Phone" width="20">
+                            <i class="fas fa-phone-alt"></i>
                             <span>+91 8088415525</span>
                         </div>
                         <div class="contact-item">
-                            <img src="google-maps.png" alt="Location" width="20">
+                            <i class="fas fa-map-marker-alt"></i>
                             <span>Vijayapura, Karnataka, India - 586115</span>
                         </div>
                     </div>
                     <div class="social-links">
-                        <a href="https://www.linkedin.com/in/sagar-k-chavan/" target="_blank" aria-label="LinkedIn">
-                            <img src="linkedin.png" width="24" alt="LinkedIn">
+                        <a href="https://www.linkedin.com/in/sagar-k-chavan/" target="_blank" aria-label="LinkedIn" class="tooltip">
+                            <i class="fab fa-linkedin-in"></i>
+                            <span class="tooltiptext">LinkedIn</span>
                         </a>
-                        <a href="https://github.com/SagarKChavan" target="_blank" aria-label="GitHub">
-                            <img src="github.png" width="24" alt="GitHub">
+                        <a href="https://github.com/SagarKChavan" target="_blank" aria-label="GitHub" class="tooltip">
+                            <i class="fab fa-github"></i>
+                            <span class="tooltiptext">GitHub</span>
                         </a>
-                        <a href="https://x.com/SAGARCHAVA57787" target="_blank" aria-label="Twitter">
-                            <img src="twitter.png" width="24" alt="Twitter">
+                        <a href="https://x.com/SAGARCHAVA57787" target="_blank" aria-label="Twitter" class="tooltip">
+                            <i class="fab fa-twitter"></i>
+                            <span class="tooltiptext">Twitter</span>
                         </a>
-                        <a href="https://www.facebook.com/profile.php?id=100056524020635" target="_blank" aria-label="Facebook">
-                            <img src="facebook.png" width="24" alt="Facebook">
+                        <a href="https://www.facebook.com/profile.php?id=100056524020635" target="_blank" aria-label="Facebook" class="tooltip">
+                            <i class="fab fa-facebook-f"></i>
+                            <span class="tooltiptext">Facebook</span>
                         </a>
-                        <a href="https://www.instagram.com/sagar_k_chavan2/" target="_blank" aria-label="Instagram">
-                            <img src="instagram.png" width="24" alt="Instagram">
+                        <a href="https://www.instagram.com/sagar_k_chavan2/" target="_blank" aria-label="Instagram" class="tooltip">
+                            <i class="fab fa-instagram"></i>
+                            <span class="tooltiptext">Instagram</span>
                         </a>
                     </div>
                 </div>
-                <div class="contact-form">
+                <div class="contact-form hover-3d">
                     <form id="contactForm">
-                        <div id="formStatus" class="form-status"></div>
+                        <div id="formStatus" class="form-status" style="display: none;"></div>
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
@@ -3163,7 +3270,7 @@
                             <label for="message">Message</label>
                             <textarea id="message" class="form-control" placeholder="Enter your message" required></textarea>
                         </div>
-                        <button type="submit" class="btn submit-btn">Send Message</button>
+                        <button type="submit" class="btn submit-btn ripple">Send Message</button>
                     </form>
                 </div>
             </div>
@@ -3186,23 +3293,28 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <div class="footer-social">
-                    <a href="https://www.linkedin.com/in/sagar-k-chavan/" target="_blank" aria-label="LinkedIn">
-                        <img src="linkedin.png" width="24" alt="LinkedIn">
+                    <a href="https://www.linkedin.com/in/sagar-k-chavan/" target="_blank" aria-label="LinkedIn" class="tooltip">
+                        <i class="fab fa-linkedin-in"></i>
+                        <span class="tooltiptext">LinkedIn</span>
                     </a>
-                    <a href="https://github.com/SagarKChavan" target="_blank" aria-label="GitHub">
-                        <img src="github.png" width="24" alt="GitHub">
+                    <a href="https://github.com/SagarKChavan" target="_blank" aria-label="GitHub" class="tooltip">
+                        <i class="fab fa-github"></i>
+                        <span class="tooltiptext">GitHub</span>
                     </a>
-                    <a href="https://x.com/SAGARCHAVA57787" target="_blank" aria-label="Twitter">
-                        <img src="twitter.png" width="24" alt="Twitter">
+                    <a href="https://x.com/SAGARCHAVA57787" target="_blank" aria-label="Twitter" class="tooltip">
+                        <i class="fab fa-twitter"></i>
+                        <span class="tooltiptext">Twitter</span>
                     </a>
-                    <a href="https://www.facebook.com/profile.php?id=100056524020635" target="_blank" aria-label="Facebook">
-                        <img src="facebook.png" width="24" alt="Facebook">
+                    <a href="https://www.facebook.com/profile.php?id=100056524020635" target="_blank" aria-label="Facebook" class="tooltip">
+                        <i class="fab fa-facebook-f"></i>
+                        <span class="tooltiptext">Facebook</span>
                     </a>
-                    <a href="https://www.instagram.com/sagar_k_chavan2/" target="_blank" aria-label="Instagram">
-                        <img src="instagram.png" width="24" alt="Instagram">
+                    <a href="https://www.instagram.com/sagar_k_chavan2/" target="_blank" aria-label="Instagram" class="tooltip">
+                        <i class="fab fa-instagram"></i>
+                        <span class="tooltiptext">Instagram</span>
                     </a>
                 </div>
-                <p class="copyright">© 2023 Sagar K. Chavan. All rights reserved.</p>
+                <p class="copyright">© 2025 Sagar K Chavan. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -3212,11 +3324,6 @@
 
     <!-- JavaScript -->
     <script>
-        // Initialize EmailJS with your user ID
-        (function() {
-            emailjs.init('user_sc406850_gmail_com'); // Replace with your actual EmailJS user ID
-        })();
-
         // Preloader with Animation
         window.addEventListener('load', () => {
             const preloader = document.querySelector('.preloader');
@@ -3432,7 +3539,7 @@
             });
         });
 
-        // Certificates Filter
+        // Certificate Filter
         const certFilterBtns = document.querySelectorAll('.certificate-filters .filter-btn');
         const certificateCards = document.querySelectorAll('.certificate-card');
         
@@ -3456,97 +3563,191 @@
         });
 
         // Form Submission with EmailJS
-        const contactForm = document.getElementById('contactForm');
-        const formStatus = document.getElementById('formStatus');
-        
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
+        (function() {
+            // Initialize EmailJS with your user ID
+            emailjs.init('user_your_emailjs_user_id'); // Replace with your actual EmailJS user ID
             
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
+            const contactForm = document.getElementById('contactForm');
+            const formStatus = document.getElementById('formStatus');
             
-            // Show loading state
-            const submitBtn = document.querySelector('.submit-btn');
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            
-            // Send email using EmailJS
-            emailjs.send('service_your_service_id', 'template_your_template_id', {
-                from_name: name,
-                from_email: email,
-                subject: subject,
-                message: message
-            })
-            .then(() => {
-                // Show success message
-                formStatus.textContent = 'Message sent successfully!';
-                formStatus.className = 'form-status success';
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
                 
-                // Reset form
-                contactForm.reset();
+                // Get form values
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value;
                 
-                // Reset button state
-                submitBtn.innerHTML = 'Send Message';
-                submitBtn.disabled = false;
+                // Show loading state
+                const submitBtn = document.querySelector('.submit-btn');
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                submitBtn.disabled = true;
                 
-                // Hide status message after 5 seconds
-                setTimeout(() => {
-                    formStatus.textContent = '';
-                    formStatus.className = 'form-status';
-                }, 5000);
-            }, (error) => {
-                // Show error message
-                formStatus.textContent = 'Failed to send message. Please try again.';
-                formStatus.className = 'form-status error';
+                // Create ripple effect
+                createRippleEffect(e);
                 
-                // Reset button state
-                submitBtn.innerHTML = 'Send Message';
-                submitBtn.disabled = false;
-                
-                console.error('EmailJS Error:', error);
+                // Send email using EmailJS
+                emailjs.send('service_your_service_id', 'template_your_template_id', {
+                    from_name: name,
+                    from_email: email,
+                    subject: subject,
+                    message: message,
+                    reply_to: email,
+                    to_email: 'sc406850@gmail.com' // Your email address
+                })
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    
+                    // Show success message
+                    formStatus.textContent = 'Message sent successfully! I will get back to you soon.';
+                    formStatus.classList.add('success');
+                    formStatus.style.display = 'block';
+                    
+                    // Reset form
+                    contactForm.reset();
+                    
+                    // Reset button
+                    submitBtn.innerHTML = 'Send Message';
+                    submitBtn.disabled = false;
+                    
+                    // Create confetti effect
+                    createConfetti();
+                    
+                    // Hide status message after 5 seconds
+                    setTimeout(() => {
+                        formStatus.style.display = 'none';
+                        formStatus.classList.remove('success');
+                    }, 5000);
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    
+                    // Show error message
+                    formStatus.textContent = 'Failed to send message. Please try again later or contact me directly at sc406850@gmail.com';
+                    formStatus.classList.add('error');
+                    formStatus.style.display = 'block';
+                    
+                    // Reset button
+                    submitBtn.innerHTML = 'Send Message';
+                    submitBtn.disabled = false;
+                    
+                    // Hide status message after 5 seconds
+                    setTimeout(() => {
+                        formStatus.style.display = 'none';
+                        formStatus.classList.remove('error');
+                    }, 5000);
+                });
             });
-        });
-
-        // Flip card functionality
-        const educationCards = document.querySelectorAll('.education-card');
-        
-        educationCards.forEach(card => {
-            // Click to flip
-            card.addEventListener('click', function(e) {
-                // Don't flip if clicking on a button
-                if (e.target.tagName === 'BUTTON' || 
-                    e.target.parentElement.tagName === 'BUTTON') {
-                    return;
+            
+            // Create ripple effect on button click
+            function createRippleEffect(event) {
+                const button = event.currentTarget;
+                const circle = document.createElement('span');
+                const diameter = Math.max(button.clientWidth, button.clientHeight);
+                const radius = diameter / 2;
+                
+                circle.style.width = circle.style.height = `${diameter}px`;
+                circle.style.left = `${event.clientX - button.getBoundingClientRect().left - radius}px`;
+                circle.style.top = `${event.clientY - button.getBoundingClientRect().top - radius}px`;
+                circle.classList.add('ripple-effect');
+                
+                const ripple = button.getElementsByClassName('ripple-effect')[0];
+                if (ripple) {
+                    ripple.remove();
                 }
-                this.classList.toggle('flipped');
+                
+                button.appendChild(circle);
+            }
+            
+            // Create confetti effect
+            function createConfetti() {
+                const colors = ['#2563eb', '#1e40af', '#f59e0b', '#ec4899', '#10b981'];
+                
+                for (let i = 0; i < 100; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.classList.add('confetti');
+                    
+                    // Random properties
+                    const size = Math.random() * 10 + 5;
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    const left = Math.random() * window.innerWidth;
+                    const animationDuration = Math.random() * 3 + 2;
+                    const animationDelay = Math.random() * 5;
+                    
+                    confetti.style.width = `${size}px`;
+                    confetti.style.height = `${size}px`;
+                    confetti.style.backgroundColor = color;
+                    confetti.style.left = `${left}px`;
+                    confetti.style.animationDuration = `${animationDuration}s`;
+                    confetti.style.animationDelay = `${animationDelay}s`;
+                    
+                    document.body.appendChild(confetti);
+                    
+                    // Remove confetti after animation completes
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, animationDuration * 1000);
+                }
+            }
+        })();
+
+        // Education Card Flip Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Flip card functionality
+            const educationCards = document.querySelectorAll('.education-card');
+            
+            educationCards.forEach(card => {
+                // Click to flip
+                card.addEventListener('click', function(e) {
+                    // Don't flip if clicking on a button
+                    if (e.target.tagName === 'BUTTON' || 
+                        e.target.parentElement.tagName === 'BUTTON') {
+                        return;
+                    }
+                    this.classList.toggle('flipped');
+                });
+                
+                // Back button functionality
+                const backBtn = card.querySelector('.flip-back-btn');
+                if (backBtn) {
+                    backBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        card.classList.remove('flipped');
+                    });
+                }
             });
             
-            // Back button functionality
-            const backBtn = card.querySelector('.flip-back-btn');
-            if (backBtn) {
-                backBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    card.classList.remove('flipped');
+            // Add hover effect for desktop only
+            if (window.innerWidth > 768) {
+                educationCards.forEach(card => {
+                    card.addEventListener('mouseenter', function() {
+                        if (!this.classList.contains('flipped')) {
+                            this.style.transform = 'translateY(-5px)';
+                        }
+                    });
+                    
+                    card.addEventListener('mouseleave', function() {
+                        this.style.transform = '';
+                    });
                 });
             }
         });
-        
-        // Add hover effect for desktop only
-        if (window.innerWidth > 768) {
-            educationCards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    if (!this.classList.contains('flipped')) {
-                        this.style.transform = 'translateY(-5px)';
-                    }
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = '';
-                });
-            });
+
+        // Text Animation for Hero Section
+        const heroText = document.querySelector('.hero-text');
+        if (heroText) {
+            const text = heroText.querySelector('h1').textContent;
+            heroText.querySelector('h1').textContent = '';
+            
+            let i = 0;
+            const typingEffect = setInterval(() => {
+                if (i < text.length) {
+                    heroText.querySelector('h1').textContent += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typingEffect);
+                }
+            }, 100);
         }
 
         // Initialize all effects when DOM is loaded
@@ -3555,7 +3756,7 @@
             setupTiltEffect();
             
             // Add hover effect to all cards
-            document.querySelectorAll('.education-card, .project-card, .certificate-card').forEach(card => {
+            document.querySelectorAll('.education-card, .project-card, .certificate-card, .timeline-content, .contact-form').forEach(card => {
                 card.addEventListener('mousemove', (e) => {
                     const rect = card.getBoundingClientRect();
                     const x = e.clientX - rect.left;
@@ -3576,14 +3777,27 @@
             });
         });
 
-        // Make skills interactive
-        document.addEventListener('DOMContentLoaded', function() {
-            const skillTags = document.querySelectorAll('.skill-tag');
-            
-            skillTags.forEach(tag => {
-                tag.addEventListener('click', function() {
-                    this.classList.toggle('highlighted');
-                });
+        // Add ripple effect to buttons
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple-effect');
+                
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = `${size}px`;
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                
+                this.appendChild(ripple);
+                
+                // Remove ripple after animation
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
             });
         });
     </script>
